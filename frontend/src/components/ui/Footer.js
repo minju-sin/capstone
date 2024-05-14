@@ -18,17 +18,17 @@ function Footer() {
             홈
             </StyledBottomNavigationA>
 
-            <StyledBottomNavigationA href="#">
+            <StyledBottomNavigationA href="/in">
             <StyledIcon src={inn} className="icon" alt="입고" />
             입고
             </StyledBottomNavigationA>
 
-            <StyledBottomNavigationA href="#">
+            <StyledBottomNavigationA href="/out">
             <StyledIcon src={out} className="icon" alt="출고" />
             출고
             </StyledBottomNavigationA>
 
-            <StyledBottomNavigationA href="#">
+            <StyledBottomNavigationA href="/set">
             <StyledIcon src={set} className="icon" alt="설정" />
             설정
             </StyledBottomNavigationA>
