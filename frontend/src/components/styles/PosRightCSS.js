@@ -32,7 +32,3 @@ export const StyledButtonMerged = styled.button`
     border-radius: 5px;
     cursor: pointer;
 `;
-
-export const StyledSpace = styled.div`
-    height: 20px; /* 원하는 공백 크기 설정 */
-`;
