@@ -13,6 +13,7 @@ function MainPage() {
     return (
     <StyledBody>
       <Header/>
+      
         <StyledContainer class="container">
           
           <PosLeft/>

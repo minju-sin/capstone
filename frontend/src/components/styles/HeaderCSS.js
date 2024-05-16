@@ -13,3 +13,7 @@ export const StyledHeader = styled.div`
     padding: 2px;
     text-align: center;
 `;
+
+export const StyledH1 = styled.h1`
+    font-family: BMJUA;
+`;

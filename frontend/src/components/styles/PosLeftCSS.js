@@ -32,11 +32,14 @@ export const StyledTable = styled.table`
 `;
 
 export const StyledTr = styled.tr`
-    
+    font-family: BMJUA;
+    font-size: 18px;
 `;
 
 export const StyledTh = styled.th`
     padding: 5px;
+    font-family: BMJUA;
+    font-size: 18px;
     border-bottom: 1px solid #999;
     
 `;
@@ -65,6 +68,8 @@ export const StyledButton = styled.button`
     height: 50px;
     margin: 5px;
     background-color: #ddd;
+    font-family: BMJUA;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

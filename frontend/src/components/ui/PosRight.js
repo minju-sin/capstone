@@ -23,8 +23,8 @@ function PosRight() {
                 <StyledRightButton class="rightbutton">아메리카노<br/>3,000</StyledRightButton>
                 <StyledRightButton class="rightbutton">카페라떼<br/>3,500</StyledRightButton>
                 <StyledRightButton class="rightbutton">카페모카<br/>3,500</StyledRightButton>
-                <StyledRightButton class="rightbutton">연유라떼<br/>3,500</StyledRightButton>
-                <StyledRightButton class="rightbutton">토피넛라떼<br/>3,500</StyledRightButton>
+                <StyledRightButton class="rightbutton">돌체라떼<br/>3,500</StyledRightButton>
+                <StyledRightButton class="rightbutton">바닐라라떼<br/>3,500</StyledRightButton>
 
                 <StyledRightButton class="rightbutton">콜드브루<br/>3,500</StyledRightButton>
                 <StyledRightButton class="rightbutton">아포카토<br/>4,000</StyledRightButton>

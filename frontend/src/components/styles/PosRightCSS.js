@@ -20,6 +20,8 @@ export const StyledRightButton = styled.button`
     height: 80px;
     margin: 5px;
     background-color: #ddd;
+    font-family: BMJUA;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -29,6 +31,8 @@ export const StyledButtonMerged = styled.button`
     height: 80px;
     margin: 5px;
     background-color: #ddd;
+    font-family: BMJUA;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
