@@ -27,6 +27,7 @@ export const StyledRightButton = styled.button`
 export const StyledButtonMerged = styled.button`
     width: calc(40% - 10px); /* 병합된 버튼은 두 배의 너비. */
     height: 80px;
+    margin: 5px;
     background-color: #ddd;
     border: none;
     border-radius: 5px;
