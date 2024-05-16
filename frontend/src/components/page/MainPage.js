@@ -1,28 +1,26 @@
 import React from "react";
-
-import { StyledButtonIncoming, StyledNavigationBar } from "../styles/InPageCSS";
 import Header from "../ui/Header";
-import Footer from "../ui/Footer";
+import { StyledBody } from "../styles/HeaderCSS";
+import { StyledContainer } from "../styles/PosLeftCSS";
+import PosLeft from "../ui/PosLeft";
+import PosRight from "../ui/PosRight";
+
+
 
 
 function MainPage() {
 
     return (
-    <>
-
-      {/* 헤더  */}
-      <StyledNavigationBar className="navigation-bar">재고 관리</StyledNavigationBar>
+    <StyledBody>
       <Header/>
+        <StyledContainer class="container">
+          
+          <PosLeft/>
 
-       
+          <PosRight/>
 
-      <StyledButtonIncoming href="/scan" className="button-incoming">
-        입고하기
-      </StyledButtonIncoming>
-
-      <Footer/>
-
-    </>
+        </StyledContainer>
+    </StyledBody>
     );
 }
 

@@ -1,15 +1,16 @@
-// ./Footer.js
+// ./Header.js
 
 import React from "react";
-import { StyledNavigaionBarAfter, StyledStatusBar } from "../styles/HeaderCSS";
+import { StyledHeader } from "../styles/HeaderCSS";
 
 
 function Header() {
     return (
-        <>
-            <StyledStatusBar className="status-bar"></StyledStatusBar>
-            <StyledNavigaionBarAfter className="navigation-bar_after"></StyledNavigaionBarAfter>
-        </>
+        
+        <StyledHeader class="header">
+          <h1>말하는 감쟈 POS 재고 관리</h1>
+        </StyledHeader>
+        
     );
 };
 
