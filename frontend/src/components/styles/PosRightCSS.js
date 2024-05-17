@@ -32,6 +32,11 @@ export const StyledRightButton = styled.button`
     }
 `;
 
+export const StyledA = styled.a`
+    text-decoration: none;
+    color: #000;
+`;
+
 export const StyledButtonMerged = styled.button`
     width: calc(40% - 10px); /* 병합된 버튼은 두 배의 너비. */
     height: 80px;

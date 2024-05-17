@@ -1,7 +1,7 @@
 // ./PosLeft.js
 
 import React from "react";
-import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged } from "../styles/PosRightCSS";
+import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
 
 
 function PosRight({ addOrder }) {
@@ -66,7 +66,7 @@ function PosRight({ addOrder }) {
                 <StyledRightButton class="button merged_col">현금</StyledRightButton>
                 <StyledRightButton class="button merged_col">신용카드</StyledRightButton>
                 <StyledRightButton class="button merged_col">
-                    <a href="/inventory">재고</a>
+                    <StyledA href="/inventory">재고</StyledA>
                 </StyledRightButton>
                 <StyledRightButton class="button merged_col">서비스</StyledRightButton>
             </StyledButtonContainer>
