@@ -24,6 +24,7 @@ export const StyledLeftInner = styled.div`
     background-color: #ddd;
     padding: 10px;
     position: relative; 
+    overflow: auto; /* 내용이 넘칠 경우 스크롤바 표시 */
 `;
 
 export const StyledTable = styled.table`
