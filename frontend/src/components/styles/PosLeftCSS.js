@@ -77,7 +77,7 @@ export const StyledButton = styled.button`
     transition: background-color 0.3s ease; /* 부드러운 색상 전환 효과 */
 
     &:hover {
-        background-color: #bbb; /* 호버 시 색상 변경 */
+        background-color: #a4a4a4; /* 호버 시 색상 변경 */
     }
 `;
 
