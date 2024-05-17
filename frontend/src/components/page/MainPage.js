@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../ui/Header";
 import { StyledBody } from "../styles/HeaderCSS";
 import { StyledContainer } from "../styles/PosLeftCSS";
 import PosLeft from "../ui/PosLeft";
 import PosRight from "../ui/PosRight";
 
-
-
-
 function MainPage() {
+
+    const [orders, setOrders] = useState([]);
+
+    const addOrder = (item) => {
+        setOrders([...orders, item]);
+    };
+
 
     return (
     <StyledBody>
@@ -16,9 +20,9 @@ function MainPage() {
       
         <StyledContainer class="container">
           
-          <PosLeft/>
+          <PosLeft orders={orders}/>
 
-          <PosRight/>
+          <PosRight addOrder={addOrder}/>
 
         </StyledContainer>
     </StyledBody>

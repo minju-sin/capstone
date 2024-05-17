@@ -1,16 +1,10 @@
 // ./PosLeft.js
 
-import React, { useState } from "react";
+import React from "react";
 import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged } from "../styles/PosRightCSS";
 
 
-function PosRight() {
-
-    const [orders, setOrders] = useState([]);
-
-    const handleAddOrder = (item) => {
-        setOrders([...orders, item]);
-    };
+function PosRight({ addOrder }) {
 
     const menuItems = [
         { name: "아메리카노", price: 3000 },
@@ -46,12 +40,12 @@ function PosRight() {
                     <StyledRightButton
                         key={index}
                         className="rightbutton"
-                        onClick={() => handleAddOrder(item)}
+                        onClick={() => addOrder(item)}
                     >
-                        {item.name}<br/>{item.price.toLocaleString()}
+                        {item.name}<br/>{item.price.toLocaleString()}원
                     </StyledRightButton>
                 ))}
-
+                
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>

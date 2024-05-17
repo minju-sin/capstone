@@ -5,7 +5,7 @@ import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, Style
 
 
 
-function PosLeft() {
+function PosLeft({ orders }) {
     return (
         <StyledLeftHalf class="left-half">
             <StyledLeftInner class="left-inner">
@@ -19,33 +19,17 @@ function PosLeft() {
                         <StyledTh>금액</StyledTh>
                         <StyledTh>비고</StyledTh>
                     </StyledTr>
-                    <StyledTr>
-                        <StyledTh>1</StyledTh>
-                        <StyledTh>카페라떼</StyledTh>
-                        <StyledTh>3,500</StyledTh>
-                        <StyledTh>1</StyledTh>
-                        <StyledTh>0</StyledTh>
-                        <StyledTh>3,500</StyledTh>
-                        <StyledTh> </StyledTh>
-                    </StyledTr>
-                    <StyledTr>
-                        <StyledTh>2</StyledTh>
-                        <StyledTh>아포카토</StyledTh>
-                        <StyledTh>4,000</StyledTh>
-                        <StyledTh>1</StyledTh>
-                        <StyledTh>0</StyledTh>
-                        <StyledTh>4,000</StyledTh>
-                        <StyledTh> </StyledTh>
-                    </StyledTr>
-                    <StyledTr>
-                        <StyledTh>3</StyledTh>
-                        <StyledTh>카페모카</StyledTh>
-                        <StyledTh>3,500</StyledTh>
-                        <StyledTh>1</StyledTh>
-                        <StyledTh>0</StyledTh>
-                        <StyledTh>3,500</StyledTh>
-                        <StyledTh> </StyledTh>
-                    </StyledTr>
+                    {orders.map((order, index) => (
+                            <StyledTr key={index}>
+                                <StyledTh>{index + 1}</StyledTh>
+                                <StyledTh>{order.name}</StyledTh>
+                                <StyledTh>{order.price.toLocaleString()}</StyledTh>
+                                <StyledTh>1</StyledTh>
+                                <StyledTh>0</StyledTh>
+                                <StyledTh>{order.price.toLocaleString()}</StyledTh>
+                                <StyledTh></StyledTh>
+                            </StyledTr>
+                    ))}
               </StyledTable>
             </StyledLeftInner>
 
