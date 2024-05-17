@@ -79,11 +79,11 @@ function PosLeft({ orders }) {
                     </StyledInfoRow>
                     <StyledInfoRow>
                         <StyledLabel>받은금액</StyledLabel>
-                        <StyledValue>0</StyledValue>
+                        <StyledValue>0원</StyledValue>
                     </StyledInfoRow>
                     <StyledInfoRow>
                         <StyledLabel style={{color: "#ff6600"}}>거스름돈</StyledLabel>
-                        <StyledValue style={{color: "#ff6600"}}>&nbsp;</StyledValue>
+                        <StyledValue style={{color: "#ff6600"}}>0원</StyledValue>
                     </StyledInfoRow>
 
                 </StyledLeftFourthLeft>
