@@ -105,6 +105,8 @@ export const StyledLeftFourthLeftButton = styled.button`
     height: 2px;
     margin: 1px;
     background-color: #ddd;
+    font-family: BMJUA;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -136,4 +138,25 @@ export const StyledNum = styled.div`
     display: flex;
     justifyContent: space-around;
     margin-top: 10px;
+`;
+
+export const StyledInfoRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    width: 100%;
+`;
+
+export const StyledLabel = styled.span`
+    text-align: left;
+    flex: 1;
+    font-family: BMJUA;
+    font-size: 20px;
+`;
+
+export const StyledValue = styled.span`
+    text-align: right;
+    flex: 1;
+    font-family: BMJUA;
+    font-size: 20px;
 `;

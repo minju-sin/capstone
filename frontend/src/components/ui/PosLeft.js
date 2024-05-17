@@ -1,7 +1,7 @@
 // ./PosLeft.js
 
 import React from "react";
-import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, StyledLeftMiddle, StyledLeftThird, StyledButton, StyledLeftFourth, StyledLeftFourthLeft, StyledLeftFourthMiddle, StyledLeftFourthRight, StyledLeftFourthLeftButton, StyledLeftFourthLeft2, StyledCenter, StyledNum } from "../styles/PosLeftCSS";
+import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, StyledLeftMiddle, StyledLeftThird, StyledButton, StyledLeftFourth, StyledLeftFourthLeft, StyledLeftFourthMiddle, StyledLeftFourthRight, StyledLeftFourthLeftButton, StyledLeftFourthLeft2, StyledCenter, StyledNum, StyledInfoRow, StyledLabel, StyledValue } from "../styles/PosLeftCSS";
 
 
 
@@ -70,27 +70,27 @@ function PosLeft() {
                         <StyledLeftFourthLeftButton class="left-fourth-left-button">회원정보</StyledLeftFourthLeftButton>
                     </StyledLeftFourthLeft2>
 
-                    <StyledButton class="button">Information</StyledButton>
-                    <div>
-                        <span>총 금액 </span>
-                        <span>11,000</span>
-                    </div>
-                    <div>
-                        <span>할인금액</span>
-                        <span>0</span>
-                    </div>
-                    <div>
-                        <span>받을금액</span>
-                        <span>11,000</span>
-                    </div>
-                    <div>
-                        <span>받은금액</span>
-                        <span>0</span>
-                    </div>
-                    <div>
-                        <span>거스름돈</span>
-                        <span> </span>
-                    </div>
+                    <StyledButton class="button" style={{color: "#ff6600"}}>Information</StyledButton>
+                    <StyledInfoRow>
+                        <StyledLabel>총 금액 </StyledLabel>
+                        <StyledValue>11,000</StyledValue>
+                    </StyledInfoRow>
+                    <StyledInfoRow>
+                        <StyledLabel>할인금액</StyledLabel>
+                        <StyledValue>0</StyledValue>
+                    </StyledInfoRow>
+                    <StyledInfoRow>
+                        <StyledLabel style={{color: "#ff6600"}}>받을금액</StyledLabel>
+                        <StyledValue style={{color: "#ff6600"}}>11,000</StyledValue>
+                    </StyledInfoRow>
+                    <StyledInfoRow>
+                        <StyledLabel>받은금액</StyledLabel>
+                        <StyledValue>0</StyledValue>
+                    </StyledInfoRow>
+                    <StyledInfoRow>
+                        <StyledLabel style={{color: "#ff6600"}}>거스름돈</StyledLabel>
+                        <StyledValue style={{color: "#ff6600"}}>&nbsp;</StyledValue>
+                    </StyledInfoRow>
 
                 </StyledLeftFourthLeft>
 
@@ -128,7 +128,7 @@ function PosLeft() {
                         <StyledButton class="button" style={{width: '30%'}}>&lt;</StyledButton>
                         <StyledButton class="button" style={{width: '60%'}}>Enter</StyledButton>
                     </StyledNum>
-                    
+
                 </StyledLeftFourthMiddle>
 
                 <StyledLeftFourthRight class="left-fourth-right">
