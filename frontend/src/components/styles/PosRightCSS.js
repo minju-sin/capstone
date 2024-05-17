@@ -47,4 +47,9 @@ export const StyledButtonMerged = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* 부드러운 색상 전환 효과 */
+    
+    &:hover {
+        background-color: #bbb; /* 호버 시 색상 변경 */
+    }
 `;
