@@ -1,7 +1,7 @@
 // ./PosLeft.js
 
 import React from "react";
-import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, StyledLeftMiddle, StyledLeftThird, StyledButton, StyledLeftFourth, StyledLeftFourthLeft, StyledLeftFourthMiddle, StyledLeftFourthRight, StyledLeftFourthLeftButton, StyledLeftFourthLeft2 } from "../styles/PosLeftCSS";
+import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, StyledLeftMiddle, StyledLeftThird, StyledButton, StyledLeftFourth, StyledLeftFourthLeft, StyledLeftFourthMiddle, StyledLeftFourthRight, StyledLeftFourthLeftButton, StyledLeftFourthLeft2, StyledCenter, StyledNum } from "../styles/PosLeftCSS";
 
 
 
@@ -95,35 +95,36 @@ function PosLeft() {
                 </StyledLeftFourthLeft>
 
                 <StyledLeftFourthMiddle class="left-fourth-middle">
-                    <div style={{width: '90%', display: 'flex', justifyContent: 'center'}}>
+                    <StyledCenter>
                         <StyledButton class="button" style={{width: '90%', marginLeft: '30px'}}>&nbsp;</StyledButton>
-                    </div>
-                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-around', marginTop: '10px'}}>
+                    </StyledCenter>
+
+                    <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>7</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>8</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>9</StyledButton>
-                    </div>
-                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-around', marginTop: '10px'}}>
+                    </StyledNum>
+                    <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>4</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>5</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>6</StyledButton>
-                    </div>
-                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-around', marginTop: '10px'}}>
+                    </StyledNum>
+                    <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>1</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>2</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>3</StyledButton>
-                    </div>
-                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-around', marginTop: '10px'}}>
+                    </StyledNum>
+                    <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>0</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>00</StyledButton>
-                        <StyledButton class="button" style={{width: '30%'}}></StyledButton>
-                    </div>
-                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-around', marginTop: '10px'}}>
+                        <StyledButton class="button" style={{width: '30%'}}>C</StyledButton>
+                    </StyledNum>
+                    <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>&lt;</StyledButton>
                         <StyledButton class="button" style={{width: '60%'}}>Enter</StyledButton>
-                    </div>
+                    </StyledNum>
                 </StyledLeftFourthMiddle>
-                <StyledLeftFourthRight class="left-fourth-right" style={{display: 'flex', flexDirection: 'column', gap:'5px'}}>
+                <StyledLeftFourthRight class="left-fourth-right">
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>포장</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>환전</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>확장메뉴</StyledButton>

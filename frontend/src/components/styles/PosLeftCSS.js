@@ -120,4 +120,20 @@ export const StyledLeftFourthRight = styled.div`
     width: 10%; /* 왼쪽 반절의 10% */
     height: 100%;
     background-color: #bbb;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+`;
+
+export const StyledCenter = styled.div`
+    width: 90%;
+    display: flex;
+    justifyContent: center;
+`;
+
+export const StyledNum = styled.div`
+    width: 100%;
+    display: flex;
+    justifyContent: space-around;
+    margin-top: 10px;
 `;
