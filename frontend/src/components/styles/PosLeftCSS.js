@@ -106,6 +106,7 @@ export const StyledLeftFourthLeftButton = styled.button`
     margin: 1px;
     background-color: #ddd;
     font-family: BMJUA;
+    font-weight: bold;
     font-size: 18px;
     border: none;
     border-radius: 5px;
@@ -151,6 +152,7 @@ export const StyledLabel = styled.span`
     text-align: left;
     flex: 1;
     font-family: BMJUA;
+    font-weight: bold;
     font-size: 20px;
 `;
 
@@ -158,5 +160,6 @@ export const StyledValue = styled.span`
     text-align: right;
     flex: 1;
     font-family: BMJUA;
+    font-weight: bold;
     font-size: 20px;
 `;
