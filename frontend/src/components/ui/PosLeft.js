@@ -95,6 +95,7 @@ function PosLeft() {
                 </StyledLeftFourthLeft>
 
                 <StyledLeftFourthMiddle class="left-fourth-middle">
+                    
                     <StyledCenter>
                         <StyledButton class="button" style={{width: '90%', marginLeft: '30px'}}>&nbsp;</StyledButton>
                     </StyledCenter>
@@ -104,26 +105,32 @@ function PosLeft() {
                         <StyledButton class="button" style={{width: '30%'}}>8</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>9</StyledButton>
                     </StyledNum>
+
                     <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>4</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>5</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>6</StyledButton>
                     </StyledNum>
+
                     <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>1</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>2</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>3</StyledButton>
                     </StyledNum>
+
                     <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>0</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>00</StyledButton>
                         <StyledButton class="button" style={{width: '30%'}}>C</StyledButton>
                     </StyledNum>
+
                     <StyledNum>
                         <StyledButton class="button" style={{width: '30%'}}>&lt;</StyledButton>
                         <StyledButton class="button" style={{width: '60%'}}>Enter</StyledButton>
                     </StyledNum>
+                    
                 </StyledLeftFourthMiddle>
+
                 <StyledLeftFourthRight class="left-fourth-right">
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>포장</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>환전</StyledButton>
@@ -131,6 +138,7 @@ function PosLeft() {
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}></StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}></StyledButton>
                 </StyledLeftFourthRight>
+
             </StyledLeftFourth>
           </StyledLeftHalf>
     );
