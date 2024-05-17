@@ -25,7 +25,13 @@ export const StyledRightButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
-`
+    transition: background-color 0.3s ease; /* 부드러운 색상 전환 효과 */
+
+    &:hover {
+        background-color: #bbb; /* 호버 시 색상 변경 */
+    }
+`;
+
 export const StyledButtonMerged = styled.button`
     width: calc(40% - 10px); /* 병합된 버튼은 두 배의 너비. */
     height: 80px;
