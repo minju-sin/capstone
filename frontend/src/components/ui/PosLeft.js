@@ -54,7 +54,7 @@ function PosLeft({ orders }) {
                         <StyledLeftFourthLeftButton class="left-fourth-left-button">회원정보</StyledLeftFourthLeftButton>
                     </StyledLeftFourthLeft2>
 
-                    <StyledButton class="button" style={{color: "#ff6600"}}>Information</StyledButton>
+                    <StyledLeftFourthLeftButton class="button" style={{color: "#ff6600"}}>Information</StyledLeftFourthLeftButton>
                     <StyledInfoRow>
                         <StyledLabel>총 금액 </StyledLabel>
                         <StyledValue>11,000</StyledValue>
@@ -119,7 +119,7 @@ function PosLeft({ orders }) {
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>포장</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>환전</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>확장메뉴</StyledButton>
-                    <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}></StyledButton>
+                    <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>금액할인</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}></StyledButton>
                 </StyledLeftFourthRight>
 
