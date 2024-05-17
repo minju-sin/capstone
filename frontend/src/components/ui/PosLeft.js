@@ -6,6 +6,16 @@ import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, Style
 
 
 function PosLeft({ orders }) {
+
+    // 주문 목록의 가격 총합을 계산하는 함수
+    const calculateTotalPrice = () => {
+        let totalPrice = 0;
+        orders.forEach(order => {
+            totalPrice += order.price;
+        });
+        return totalPrice;
+    };
+
     return (
         <StyledLeftHalf class="left-half">
             <StyledLeftInner class="left-inner">
@@ -57,15 +67,15 @@ function PosLeft({ orders }) {
                     <StyledLeftFourthLeftButton class="button" style={{color: "#ff6600"}}>Information</StyledLeftFourthLeftButton>
                     <StyledInfoRow>
                         <StyledLabel>총 금액 </StyledLabel>
-                        <StyledValue>11,000</StyledValue>
+                        <StyledValue>{calculateTotalPrice().toLocaleString()}원</StyledValue>
                     </StyledInfoRow>
                     <StyledInfoRow>
                         <StyledLabel>할인금액</StyledLabel>
-                        <StyledValue>0</StyledValue>
+                        <StyledValue>0원</StyledValue>
                     </StyledInfoRow>
                     <StyledInfoRow>
                         <StyledLabel style={{color: "#ff6600"}}>받을금액</StyledLabel>
-                        <StyledValue style={{color: "#ff6600"}}>11,000</StyledValue>
+                        <StyledValue>{calculateTotalPrice().toLocaleString()}원</StyledValue>
                     </StyledInfoRow>
                     <StyledInfoRow>
                         <StyledLabel>받은금액</StyledLabel>
@@ -119,7 +129,7 @@ function PosLeft({ orders }) {
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>포장</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>환전</StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>확장메뉴</StyledButton>
-                    <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}>금액할인</StyledButton>
+                    <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}></StyledButton>
                     <StyledButton class="button" style={{flex: 1, width: 'calc(100% - 10px)'}}></StyledButton>
                 </StyledLeftFourthRight>
 
