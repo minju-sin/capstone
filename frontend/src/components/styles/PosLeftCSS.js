@@ -19,7 +19,7 @@ export const StyledLeftHalf = styled.div`
 
 export const StyledLeftInner = styled.div`
     width: 98%; 
-    height: 40%; /* 왼쪽 반절의 40% */
+    height: 192px; /* 왼쪽 반절의 40% */
     margin-bottom: 10px; 
     background-color: #ddd;
     padding: 10px;

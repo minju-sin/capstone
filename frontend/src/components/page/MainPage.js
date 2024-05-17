@@ -7,6 +7,7 @@ import PosRight from "../ui/PosRight";
 
 function MainPage() {
 
+    // 메뉴 클릭 시 주문표에 추가되는 기능 
     const [orders, setOrders] = useState([]);
 
     const addOrder = (item) => {

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const StyledRightHalf = styled.div`
     width: 50%; /* 나머지 공간인 오른쪽 반절의 너비를 50%로 설정. */
-    height: 100%;
+    height: 820px;
     padding: 20px;
     background-color: #ccc;
     box-sizing: border-box;
