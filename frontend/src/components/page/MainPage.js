@@ -14,6 +14,10 @@ function MainPage() {
         setOrders([...orders, item]);
     };
 
+    // 전체 주문 목록을 비우는 함수
+    const clearOrders = () => {
+      setOrders([]);
+    };
 
     return (
     <StyledBody>
@@ -21,7 +25,7 @@ function MainPage() {
       
         <StyledContainer class="container">
           
-          <PosLeft orders={orders}/>
+          <PosLeft orders={orders} clearOrders={clearOrders}/>
 
           <PosRight addOrder={addOrder}/>
 

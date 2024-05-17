@@ -5,7 +5,7 @@ import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, Style
 
 
 
-function PosLeft({ orders }) {
+function PosLeft({ orders, clearOrders }) {
 
     // 주문 목록의 가격 총합을 계산하는 함수
     const calculateTotalPrice = () => {
@@ -46,7 +46,9 @@ function PosLeft({ orders }) {
             <StyledLeftMiddle class="left-middle">&nbsp;</StyledLeftMiddle>
 
             <StyledLeftThird class="left-third">
-                <StyledButton class="button">전체<br/>취소 </StyledButton>
+                <StyledButton className="button" onClick={clearOrders}>
+                    전체<br/>취소
+                </StyledButton>
                 <StyledButton class="button">선택<br/>취소</StyledButton>
                 <StyledButton class="button">할인<br/>처리</StyledButton>
                 <StyledButton class="button">수량<br/>변경</StyledButton>
