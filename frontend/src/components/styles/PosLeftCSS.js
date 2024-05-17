@@ -77,15 +77,37 @@ export const StyledButton = styled.button`
 
 export const StyledLeftFourth = styled.div`
     width: 100%; 
-    height: 50%; /* 왼쪽 반절의 50% */
+    height: 470px; 
     background-color: #a4a4a4;
     display: flex;
+    padding: 2px;
 `;
 
 export const StyledLeftFourthLeft = styled.div`
     width: 50%;
-    height: 100%;
+    height: 95%;
     background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+`;
+
+export const StyledLeftFourthLeft2 = styled.div`
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+`;
+
+export const StyledLeftFourthLeftButton = styled.button`
+    width: calc(33.3% - 10px); /* 버튼 간격과 여백을 고려하여 설정 */
+    height: 2px;
+    margin: 1px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 `;
 
 export const StyledLeftFourthMiddle = styled.div`
