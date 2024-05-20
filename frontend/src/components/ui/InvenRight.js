@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyledRightSection, StyledInvenButtonContainer, StyledPopUp, StyledPopUpInner, StyledB, StyledH1, StyledP, StyledCancelButton, StyledConfirmButton  } from "../styles/InvenRightCSS.js";
-import { StyledRightButton } from "../styles/PosRightCSS.js";
+import { StyledA, StyledButtonMerged, StyledRightButton } from "../styles/PosRightCSS.js";
+import Button from "../ui/Button.js";
 
 function InvenRight({ addItemToInventory }) {
 
@@ -45,11 +46,7 @@ function InvenRight({ addItemToInventory }) {
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
+                <Button/>
                 
                 <StyledRightButton class="button" onClick={() => showPopup('원두')}>원두</StyledRightButton>
                 <StyledRightButton class="button" onClick={() => showPopup('바닐라')}>바닐라</StyledRightButton>
@@ -57,35 +54,31 @@ function InvenRight({ addItemToInventory }) {
                 <StyledRightButton class="button" onClick={() => showPopup('초코시럽')}>초코시럽</StyledRightButton>
                 <StyledRightButton class="button" onClick={() => showPopup('우유')}>우유</StyledRightButton>
 
-                <StyledRightButton class="button">녹차</StyledRightButton>
-                <StyledRightButton class="button">딸기</StyledRightButton>
-                <StyledRightButton class="button">헤이즐넛</StyledRightButton>
-                <StyledRightButton class="button">아이스크림</StyledRightButton>
-                <StyledRightButton class="button">콜드브루</StyledRightButton>
+                <StyledRightButton class="button" onClick={() => showPopup('녹차')}>녹차</StyledRightButton>
+                <StyledRightButton class="button" onClick={() => showPopup('딸기')}>딸기</StyledRightButton>
+                <StyledRightButton class="button" onClick={() => showPopup('헤이즐넛')}>헤이즐넛</StyledRightButton>
+                <StyledRightButton class="button" onClick={() => showPopup('아이스크림')}>아이스크림</StyledRightButton>
+                <StyledRightButton class="button" onClick={() => showPopup('콜드브루')}>콜드브루</StyledRightButton>
 
-                <StyledRightButton class="button">유자</StyledRightButton>
-                <StyledRightButton class="button">설탕시럽</StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
+                <StyledRightButton class="button" onClick={() => showPopup('유자')}>유자</StyledRightButton>
+                <StyledRightButton class="button" onClick={() => showPopup('설탕시럽')}>설탕시럽</StyledRightButton>
                 <StyledRightButton class="button"> </StyledRightButton>
                 <StyledRightButton class="button"> </StyledRightButton>
                 <StyledRightButton class="button"> </StyledRightButton>
 
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
 
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
-                <StyledRightButton class="button"> </StyledRightButton>
+                <Button/>
+                
+                <StyledButtonMerged class="button merged">
+                    <StyledA href="/">
+                        이전
+                    </StyledA>
+                </StyledButtonMerged>
+                <StyledRightButton class="rightbutton"> </StyledRightButton>
+                <StyledRightButton class="rightbutton"> </StyledRightButton>
+                <StyledRightButton class="rightbutton"> </StyledRightButton>
+
+                <Button/>
 
             </StyledInvenButtonContainer>
 

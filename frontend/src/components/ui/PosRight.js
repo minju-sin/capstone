@@ -2,6 +2,7 @@
 
 import React from "react";
 import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
+import Button from "./Button";
 
 
 function PosRight({ addOrder }) {
@@ -29,11 +30,7 @@ function PosRight({ addOrder }) {
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
+                <Button/>
 
                 {/* 가게 메뉴목록 */}
                 {menuItems.map((item, index) => (
@@ -51,11 +48,7 @@ function PosRight({ addOrder }) {
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
 
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
+                <Button/>
 
                 <StyledButtonMerged class="button merged">기타</StyledButtonMerged>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>

@@ -6,10 +6,10 @@ import InvenLeft from "../ui/InvenLeft";
 import InvenRight from "../ui/InvenRight";
 
 function InventoryPage() {
-    // State to hold inventory items
+    // 재고 추가 변수 
     const [inventoryItems, setInventoryItems] = useState([]);
 
-    // Function to add item to inventory
+    // 재고 추가하는 함수 
     const addItemToInventory = (item, quantity) => {
         setInventoryItems(prevItems => [
             ...prevItems,
