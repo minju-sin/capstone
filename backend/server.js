@@ -1,18 +1,22 @@
 // server.js
 
 const express = require('express');
-const cors = require("cors");
+const dbConnect = require('./config/dbConnect');
+const cors = require('cors');
 
 const app = express();
+dbConnect();
+
 app.use(express.json());
+
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
 }));
 
-app.post('/api/userData', (req, res) => {
-    console.log(req.body);
-    res.json('Data received');  // json 형태로 응답을 보냄
+// get 요청
+app.get('/api/userData', (req, res) => {
+    res.send(`hello`);
 });
 
 app.listen(8080, () => {		// 8080번 포트로 서버 실행
