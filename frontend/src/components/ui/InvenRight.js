@@ -26,6 +26,14 @@ function InvenRight() {
         setPopup((prevPopup) => ({ ...prevPopup, quantity: Math.max(1, prevPopup.quantity - 1) }));
     };
 
+    // 확인 버튼 함수
+    const handleConfirm = () => {
+        // 왼쪽 재고 화면에 등록하는 로직 구현
+        // 여기서는 예시로 console.log로 확인
+        console.log(`등록할 재료: ${popup.item}, 수량: ${popup.quantity}`);
+        hidePopup(); // 팝업 숨기기
+    };
+
     return (
 
         <StyledRightSection class="right-section">
@@ -93,7 +101,7 @@ function InvenRight() {
                         </StyledP>
 
                         <StyledCancelButton onClick={hidePopup}>취소</StyledCancelButton>
-                        <StyledConfirmButton onClick={hidePopup}>확인</StyledConfirmButton>
+                        <StyledConfirmButton onClick={handleConfirm}>확인</StyledConfirmButton>
                     </StyledPopUpInner>
                 </StyledPopUp>
             )}
