@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyledRightSection, StyledInvenButtonContainer, StyledPopUp, StyledPopUpInner, StyledB, StyledH1, StyledP, StyledCancelButton, StyledConfirmButton  } from "../styles/InvenRightCSS.js";
 import { StyledRightButton } from "../styles/PosRightCSS.js";
 
-function InvenRight() {
+function InvenRight({ addItemToInventory }) {
 
     const [popup, setPopup] = useState({ visible: false, item: '', quantity: 1 });
 
@@ -29,8 +29,8 @@ function InvenRight() {
     // 확인 버튼 함수
     const handleConfirm = () => {
         // 왼쪽 재고 화면에 등록하는 로직 구현
-        // 여기서는 예시로 console.log로 확인
-        console.log(`등록할 재료: ${popup.item}, 수량: ${popup.quantity}`);
+        addItemToInventory(popup.item, popup.quantity);
+
         hidePopup(); // 팝업 숨기기
     };
 
