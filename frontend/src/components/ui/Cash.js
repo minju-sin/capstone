@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledCancelButton, StyledConfirmButton, StyledH1, StyledP, StyledPopUp, StyledPopUpInner } from '../styles/InvenRightCSS';
 
-const Cash = ({ orders = [], onClose }) => (
+const Cash = ({ onClose }) => (
   <>
     <StyledPopUp onClick={onClose}>
         <StyledPopUpInner>

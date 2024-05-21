@@ -1,4 +1,4 @@
-// ./PosLeft.js
+// ./PosRight.js
 
 import React, { useState } from "react";
 import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
