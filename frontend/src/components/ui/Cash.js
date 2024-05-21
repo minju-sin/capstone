@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledCancelButton, StyledConfirmButton, StyledH1, StyledP, StyledPopUp, StyledPopUpInner } from '../styles/InvenRightCSS';
 
 const Cash = ({ onClose }) => (
-  <>
+    
     <StyledPopUp onClick={onClose}>
         <StyledPopUpInner>
             <StyledH1>현금결제</StyledH1>
@@ -14,7 +14,7 @@ const Cash = ({ onClose }) => (
             <StyledConfirmButton>완료</StyledConfirmButton>
         </StyledPopUpInner>
     </StyledPopUp>
-  </>
+
 );
 
 export default Cash;
