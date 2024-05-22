@@ -1,14 +1,12 @@
 // ./PosRight.js
 
-import React, { useState } from "react";
+import React from "react";
 import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
 import Button from "./Button";
-import Cash from "./Cash";
 
 
-function PosRight({ addOrder }) {
-    const [isPopupVisible, setPopupVisible] = useState(false);
-
+function PosRight({ addOrder, handleCashButtonClick   }) {
+    
     const menuItems = [
         { name: "아메리카노", price: 3000 },
         { name: "카페라떼", price: 3500 },
@@ -23,13 +21,6 @@ function PosRight({ addOrder }) {
         { name: "딸기라떼", price: 4000 },
     ];
 
-    const handleCashButtonClick = () => {
-        setPopupVisible(true);
-    };
-
-    const handleClosePopup = () => {
-        setPopupVisible(false);
-    };
 
     return (
         <StyledRightHalf class="right-half">
@@ -66,7 +57,9 @@ function PosRight({ addOrder }) {
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 
                 <StyledRightButton class="button merged_col">주문</StyledRightButton>
-                <StyledRightButton className="button merged_col" onClick={handleCashButtonClick}>현금</StyledRightButton>
+                <StyledRightButton className="button merged_col" onClick={handleCashButtonClick}>
+                    현금
+                </StyledRightButton>
                 <StyledRightButton class="button merged_col">신용카드</StyledRightButton>
                 <StyledRightButton class="button merged_col">
                     <StyledA href="/inventory">재고</StyledA>
@@ -74,7 +67,7 @@ function PosRight({ addOrder }) {
                 <StyledRightButton class="button merged_col">서비스</StyledRightButton>
             </StyledButtonContainer>
 
-            {isPopupVisible && <Cash onClose={handleClosePopup} />}
+            
         </StyledRightHalf>
     );
 };

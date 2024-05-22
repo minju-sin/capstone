@@ -5,7 +5,7 @@ import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, Style
 
 
 
-function PosLeft({ orders, clearOrders }) {
+function PosLeft({ orders, clearOrders, receivedAmount  }) {
 
     // 주문 목록의 가격 총합을 계산하는 함수
     const calculateTotalPrice = () => {
@@ -81,7 +81,7 @@ function PosLeft({ orders, clearOrders }) {
                     </StyledInfoRow>
                     <StyledInfoRow>
                         <StyledLabel>받은금액</StyledLabel>
-                        <StyledValue>0원</StyledValue>
+                        <StyledValue>{receivedAmount.toLocaleString()}원</StyledValue>
                     </StyledInfoRow>
                     <StyledInfoRow>
                         <StyledLabel style={{color: "#ff6600"}}>거스름돈</StyledLabel>
