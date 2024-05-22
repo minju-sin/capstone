@@ -64,7 +64,9 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
                 <StyledRightButton class="button merged_col">
                     <StyledA href="/inventory">재고</StyledA>
                 </StyledRightButton>
-                <StyledRightButton class="button merged_col">서비스</StyledRightButton>
+                <StyledRightButton class="button merged_col">
+                    <StyledA href="/service">서비스</StyledA>
+                </StyledRightButton>
             </StyledButtonContainer>
 
             

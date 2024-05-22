@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './components/page/MainPage';
 import InventoryPage from './components/page/InventoryPage';
+import ServicePage from './components/page/ServicePage';
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
 
                 {/* POS 재고 화면 */}
                 <Route path="/inventory" element={<InventoryPage />} />
+
+                {/* 주문내역 화면 */}
+                <Route path="/service" element={<ServicePage />} />
           
             </Routes>
         </BrowserRouter>

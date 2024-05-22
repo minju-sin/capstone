@@ -28,6 +28,7 @@ function MainPage() {
       setReceivedAmount(totalAmount);
     };
 
+    // 주문목록 총 금액 함수
     const calculateTotalPrice = () => {
       let totalPrice = 0;
       orders.forEach(order => {
