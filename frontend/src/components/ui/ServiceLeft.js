@@ -6,7 +6,8 @@ import {
      StyledInlineGroup, 
      StyledLSection, 
      StyledLabel,
-     StyledSelect
+     StyledSelect,
+     StyledInput
 } from "../styles/ServiceLeft";
 
 function ServiceLeft() {
@@ -35,8 +36,34 @@ function ServiceLeft() {
                          {/* <!-- 추가 옵션들 --> */}
                     </StyledSelect>
                 </StyledFormGroup>
-
             </StyledInlineGroup>
+
+            <StyledInlineGroup>
+                <StyledFormGroup class="form-group">
+                    <StyledLabel for="business-date-start">영업 일자</StyledLabel>
+                    <StyledInput type="date" id="business-date-start"/>
+                </StyledFormGroup>
+
+                <StyledFormGroup class="form-group">
+                    <StyledLabel for="business-date-end">영업 일자 종료</StyledLabel>
+                    <StyledInput type="date" id="business-date-end"/>
+                </StyledFormGroup>
+            </StyledInlineGroup>
+
+            <StyledInlineGroup>
+                <StyledFormGroup class="form-group">
+                    <StyledLabel for="time-period-start">시간대별 시작</StyledLabel>
+                    <StyledInput type="date" id="time-period-start"/>
+                </StyledFormGroup>
+
+                <StyledFormGroup class="form-group">
+                    <StyledLabel for="time-period-end">시간대별 종료</StyledLabel>
+                    <StyledInput type="date" id="time-period-end"/>
+                </StyledFormGroup>
+            </StyledInlineGroup>
+
+            
+
         </div>
       </StyledLSection>
     );

@@ -49,3 +49,11 @@ export const StyledSelect = styled.select`
     border: 1px solid #999;
     border-radius: 4px;
 `;
+
+export const StyledInput = styled.input`
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 4px;
+`;
