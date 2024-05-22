@@ -5,13 +5,12 @@ const Cash = ({ onClose }) => (
     
     <StyledPopUp onClick={onClose}>
         <StyledPopUpInner>
-            <StyledH1>현금결제</StyledH1>
+            <StyledH1 style={{marginTop:'65px'}}>현금결제</StyledH1>
 
-            <StyledP style={{color: "#ff6600"}}>받을금액</StyledP>
-            <StyledP>원</StyledP>
+            <StyledP style={{textAlign:'center', color:'#f44336'}}>결제를 진행하겠습니까?</StyledP>
 
-            <StyledCancelButton onClick={onClose}>취소</StyledCancelButton>
-            <StyledConfirmButton>완료</StyledConfirmButton>
+            <StyledCancelButton onClick={onClose}>나가기</StyledCancelButton>
+            <StyledConfirmButton>영수증 없이 결제</StyledConfirmButton>
         </StyledPopUpInner>
     </StyledPopUp>
 
