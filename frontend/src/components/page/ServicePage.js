@@ -3,6 +3,7 @@
 import React from "react";
 import { StyledBody, StyledH1, StyledHeader } from "../styles/HeaderCSS";
 import ServiceLeft from "../ui/ServiceLeft";
+import { StyledMainContent, StyledServiceContainer } from "../styles/ServiceLeft";
 
 function ServicePage() {
 
@@ -12,7 +13,11 @@ function ServicePage() {
           <StyledH1>영수증 조회</StyledH1>
         </StyledHeader>
 
-        <ServiceLeft/>
+        <StyledServiceContainer>
+            <StyledMainContent>
+                <ServiceLeft/>
+            </StyledMainContent>
+        </StyledServiceContainer>
 
         
       </StyledBody>
