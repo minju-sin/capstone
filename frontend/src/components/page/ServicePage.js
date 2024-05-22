@@ -1,14 +1,19 @@
 // ./ServicePage.js
 
 import React from "react";
-import Header from "../ui/Header";
-import { StyledBody } from "../styles/HeaderCSS";
+import { StyledBody, StyledH1, StyledHeader } from "../styles/HeaderCSS";
+import ServiceLeft from "../ui/ServiceLeft";
 
 function ServicePage() {
 
     return (
       <StyledBody>
-        <Header/>
+        <StyledHeader class="header">
+          <StyledH1>영수증 조회</StyledH1>
+        </StyledHeader>
+
+        <ServiceLeft/>
+
         
       </StyledBody>
     );
