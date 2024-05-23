@@ -7,7 +7,11 @@ import {
      StyledLSection, 
      StyledLabel,
      StyledSelect,
-     StyledInput
+     StyledInput,
+     StyledServiceButton,
+     StyledBottomButtons,
+     StyledLeftButtons,
+     StyledLeftButton
 } from "../styles/ServiceLeft";
 
 function ServiceLeft() {
@@ -53,18 +57,55 @@ function ServiceLeft() {
             <StyledInlineGroup>
                 <StyledFormGroup class="form-group">
                     <StyledLabel for="time-period-start">시간대별 시작</StyledLabel>
-                    <StyledInput type="date" id="time-period-start"/>
+                    <StyledInput type="time" id="time-period-start"/>
                 </StyledFormGroup>
 
                 <StyledFormGroup class="form-group">
                     <StyledLabel for="time-period-end">시간대별 종료</StyledLabel>
-                    <StyledInput type="date" id="time-period-end"/>
+                    <StyledInput type="time" id="time-period-end"/>
                 </StyledFormGroup>
             </StyledInlineGroup>
 
-            
+            <StyledInlineGroup>
+                <StyledFormGroup class="form-group">
+                    <StyledLabel for="amount-range-min">금액별 최소</StyledLabel>
+                    <StyledInput type="number" id="amount-range-min" value={0}/>
+                </StyledFormGroup>
 
+                <StyledFormGroup class="form-group">
+                    <StyledLabel for="amount-range-max">금액별 최대</StyledLabel>
+                    <StyledInput type="number" id="amount-range-max" value={999999}/>
+                </StyledFormGroup>
+            </StyledInlineGroup>
+
+            <StyledFormGroup class="form-group">
+                    <StyledLabel for="product-barcode1">상품 바코드1</StyledLabel>
+                    <StyledInlineGroup>
+                        <StyledInput type="text" id="product-barcode1"/>
+                        <StyledServiceButton>상품명으로 조회</StyledServiceButton>
+                    </StyledInlineGroup>
+            </StyledFormGroup>
+
+            <StyledFormGroup class="form-group">
+                    <StyledLabel for="product-barcode2">상품 바코드2</StyledLabel>
+                    <StyledInlineGroup>
+                        <StyledInput type="text" id="product-barcode2"/>
+                        <StyledServiceButton>상품명으로 조회</StyledServiceButton>
+                    </StyledInlineGroup>
+            </StyledFormGroup>
+
+            <StyledFormGroup>
+                <StyledServiceButton>조회</StyledServiceButton>
+            </StyledFormGroup>
         </div>
+
+        <StyledBottomButtons class="bottom-buttons">
+                    <StyledLeftButtons class="left-buttons">
+                        <StyledLeftButton>이전[CLEAR]</StyledLeftButton>
+                        <StyledLeftButton>간이영수증 출력</StyledLeftButton>
+                    </StyledLeftButtons>
+        </StyledBottomButtons>
+
       </StyledLSection>
     );
 }

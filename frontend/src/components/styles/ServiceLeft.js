@@ -57,3 +57,34 @@ export const StyledInput = styled.input`
     border: 1px solid #999;
     border-radius: 4px;
 `;
+
+export const StyledServiceButton = styled.button`
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    margin-top: 5px;
+`;
+
+export const StyledBottomButtons = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+export const StyledLeftButtons = styled.div`
+    display: flex;
+    gap: 10px;
+`;
+
+export const StyledLeftButton = styled.button`
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+`;
