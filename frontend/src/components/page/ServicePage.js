@@ -3,7 +3,8 @@
 import React from "react";
 import { StyledBody, StyledH1, StyledHeader } from "../styles/HeaderCSS";
 import ServiceLeft from "../ui/ServiceLeft";
-import { StyledMainContent, StyledServiceContainer } from "../styles/ServiceLeft";
+import { StyledMainContent, StyledServiceContainer } from "../styles/ServiceLeftCSS";
+import ServiceRight from "../ui/ServiceRight";
 
 function ServicePage() {
 
@@ -16,6 +17,7 @@ function ServicePage() {
         <StyledServiceContainer>
             <StyledMainContent>
                 <ServiceLeft/>
+                <ServiceRight/>
             </StyledMainContent>
         </StyledServiceContainer>
 

@@ -1,4 +1,4 @@
-// ./ServicePage.js
+// ./ServiceLeft.js
 
 import React from "react";
 import {
@@ -12,13 +12,14 @@ import {
      StyledBottomButtons,
      StyledLeftButtons,
      StyledLeftButton
-} from "../styles/ServiceLeft";
+} from "../styles/ServiceLeftCSS";
+import { Div } from "../styles/ServiceRightCSS";
 
 function ServiceLeft() {
 
     return (
       <StyledLSection class="left-section">
-        <div>
+        <Div>
             <StyledInlineGroup class="inline-group">
                 <StyledFormGroup class="form-group">
                     <StyledLabel for="pos-number">POS No</StyledLabel>
@@ -97,7 +98,7 @@ function ServiceLeft() {
             <StyledFormGroup>
                 <StyledServiceButton>조회</StyledServiceButton>
             </StyledFormGroup>
-        </div>
+        </Div>
 
         <StyledBottomButtons class="bottom-buttons">
                     <StyledLeftButtons class="left-buttons">
