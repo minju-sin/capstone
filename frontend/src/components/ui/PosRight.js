@@ -1,25 +1,27 @@
 // ./PosRight.js
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
 import Button from "./Button";
 
 
 function PosRight({ addOrder, handleCashButtonClick   }) {
     
-    const menuItems = [
-        { name: "아메리카노", price: 3000 },
-        { name: "카페라떼", price: 3500 },
-        { name: "카페모카", price: 3500 },
-        { name: "돌체라떼", price: 3500 },
-        { name: "바닐라라떼", price: 3500 },
-        { name: "콜드브루", price: 3500 },
-        { name: "아포카토", price: 4000 },
-        { name: "카푸치노", price: 3500 },
-        { name: "유자차", price: 3500 },
-        { name: "녹차라떼", price: 3500 },
-        { name: "딸기라떼", price: 4000 },
-    ];
+    const [menuItems, setMenuItems] = useState([]);
+
+    useEffect(() => {
+        fetchMenuItems();
+    }, []);
+
+    const fetchMenuItems = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/menu');
+            const data = await response.json();
+            setMenuItems(data);
+        } catch (error) {
+            console.error('Error fetching menu items:', error);
+        }
+    };
 
 
     return (
@@ -38,9 +40,9 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
                     <StyledRightButton
                         key={index}
                         className="rightbutton"
-                        onClick={() => addOrder(item)}
+                        onClick={() => addOrder({ name: item.idmenu, price: item.pricemenu })}
                     >
-                        {item.name}<br/>{item.price.toLocaleString()}원
+                        {item.idmenu}<br/>{item.pricemenu.toLocaleString()}원
                     </StyledRightButton>
                 ))}
                 
