@@ -1,25 +1,29 @@
 // ./PosRight.js
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
 import Button from "./Button";
 
 
 function PosRight({ addOrder, handleCashButtonClick   }) {
     
-    const menuItems = [
-        { name: "아메리카노", price: 3000 },
-        { name: "카페라떼", price: 3500 },
-        { name: "카페모카", price: 3500 },
-        { name: "돌체라떼", price: 3500 },
-        { name: "바닐라라떼", price: 3500 },
-        { name: "콜드브루", price: 3500 },
-        { name: "아포카토", price: 4000 },
-        { name: "카푸치노", price: 3500 },
-        { name: "유자차", price: 3500 },
-        { name: "녹차라떼", price: 3500 },
-        { name: "딸기라떼", price: 4000 },
-    ];
+    const [menuItems, setMenuItems] = useState([]); // 메뉴판 상태
+
+    // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect 훅을 사용하여 데이터를 가져옴
+    useEffect(() => {
+        fetchMenuItems(); // fetchMenuItems 함수 호출
+    }, []);
+
+    // 서버에서 메뉴 아이템 데이터를 가져오는 비동기 함수
+    const fetchMenuItems = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/menu'); // axios를 사용하여 GET 요청을 보냅니다.
+            setMenuItems(response.data); // 응답 데이터를 상태에 설정합니다.
+        } catch (error) {
+            console.error('Error fetching menu items:', error);
+        }
+    };
 
 
     return (
@@ -38,9 +42,9 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
                     <StyledRightButton
                         key={index}
                         className="rightbutton"
-                        onClick={() => addOrder(item)}
+                        onClick={() => addOrder({ name: item.idmenu, price: item.pricemenu })}
                     >
-                        {item.name}<br/>{item.price.toLocaleString()}원
+                        {item.idmenu}<br/>{item.pricemenu.toLocaleString()}원
                     </StyledRightButton>
                 ))}
                 
