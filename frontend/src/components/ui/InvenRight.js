@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyledRightSection, StyledInvenButtonContainer, StyledPopUp, StyledPopUpInner, StyledB, StyledH1, StyledP, StyledCancelButton, StyledConfirmButton  } from "../styles/InvenRightCSS.js";
 import { StyledA, StyledButtonMerged, StyledRightButton } from "../styles/PosRightCSS.js";
 import Button from "../ui/Button.js";
+import axios from "axios";
 
 function InvenRight({ addItemToInventory }) {
 
@@ -27,12 +28,20 @@ function InvenRight({ addItemToInventory }) {
         setPopup((prevPopup) => ({ ...prevPopup, quantity: Math.max(1, prevPopup.quantity - 1) }));
     };
 
-    // 확인 버튼 함수
+    // 확인 버튼 함수 누르면 db에 저장하기
     const handleConfirm = () => {
-        // 왼쪽 재고 화면에 등록하는 로직 구현
-        addItemToInventory(popup.item, popup.quantity);
-
-        hidePopup(); // 팝업 숨기기
+        axios.post("http://localhost:8080/inventory/save", {
+            idinventory: popup.item,
+            quantity: popup.quantity
+        })
+        .then(response => {
+            console.log("왼쪽 재고 화면에 등록하는 로직 구현", response.data);
+            addItemToInventory(popup.item, popup.quantity);
+            hidePopup(); // 팝업 숨기기
+        })
+        .catch(error => {
+            console.error("Error adding item to inventory:", error);
+        });
     };
 
     return (

@@ -6,7 +6,7 @@ const router = express.Router();
 
 // 포스기 메뉴판
 router
-.route("/")
+.route("/menu")
     .get(PosMenu);
 
 module.exports = router;

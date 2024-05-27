@@ -15,7 +15,10 @@ app.use(cors({
 }));
 
 // 포스기 
-app.use("/menu", require("./routes/posRoute"));
+app.use("/pos", require("./routes/posRoute"));
+
+// 재고 
+app.use("/inventory", require("./routes/invenRoute"));
   
 
 app.listen(8080, () => {		// 8080번 포트로 서버 실행

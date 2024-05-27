@@ -18,7 +18,7 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
     // 서버에서 메뉴 아이템 데이터를 가져오는 비동기 함수
     const fetchMenuItems = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/menu'); // axios를 사용하여 GET 요청을 보냅니다.
+            const response = await axios.get('http://localhost:8080/pos/menu'); // axios를 사용하여 GET 요청을 보냅니다.
             setMenuItems(response.data); // 응답 데이터를 상태에 설정합니다.
         } catch (error) {
             console.error('Error fetching menu items:', error);
