@@ -32,5 +32,27 @@ const InvenSave = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { InvenSave };
+// 재고 보여주기 API
+// GET /show
+const InvenShow = asyncHandler(async (req, res) => {
+    let connection;
+    try {
+        // 데이터베이스에 연결
+        connection = await dbConnect();
+        
+        const [results] = await connection.query('SELECT idinventory, quantity FROM inventory');
+        
+        // 쿼리 결과를 JSON 형식으로 응답
+        res.json(results);
+    } catch (err) {
+        console.error('오류 발생', err);
+        res.status(500).send('서버 에러');
+    } finally {
+        // 데이터베이스 연결을 종료
+        if (connection) {
+            await connection.end();
+        }
+    }
+});
+module.exports = { InvenSave, InvenShow };
 
