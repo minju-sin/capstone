@@ -9,6 +9,8 @@ router
 .route("/save")
     .post(InvenSave);
 
+
+// 재고 보여주기
 router
 .route("/show")
     .get(InvenShow);
