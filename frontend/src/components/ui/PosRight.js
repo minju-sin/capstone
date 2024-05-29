@@ -4,11 +4,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
 import Button from "./Button";
+import CreditCard from "./CreditCard";
 
 
 function PosRight({ addOrder, handleCashButtonClick   }) {
     
     const [menuItems, setMenuItems] = useState([]); // 메뉴판 상태
+    const [isCreditCardPopupVisible, setIsCreditCardPopupVisible] = useState(false); // 신용카드 
+
 
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect 훅을 사용하여 데이터를 가져옴
     useEffect(() => {
@@ -23,6 +26,16 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
         } catch (error) {
             console.error('Error fetching menu items:', error);
         }
+    };
+
+    // 신용카드 결제 팝업창 열기 
+    const openCreditCardPopup = () => {
+        setIsCreditCardPopupVisible(true);
+    };
+
+    // 신용카드 결제 팝업창 닫기
+    const closeCreditCardPopup = () => {
+        setIsCreditCardPopupVisible(false);
     };
 
 
@@ -64,7 +77,13 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
                 <StyledRightButton className="button merged_col" onClick={handleCashButtonClick}>
                     현금
                 </StyledRightButton>
-                <StyledRightButton class="button merged_col">신용카드</StyledRightButton>
+                <StyledRightButton className="button merged_col" onClick={openCreditCardPopup}>
+                    신용카드
+                </StyledRightButton>
+                {/* 신용카드 팝업창 */}
+                {isCreditCardPopupVisible && 
+                    <CreditCard onClose={closeCreditCardPopup} />
+                }
                 <StyledRightButton class="button merged_col">
                     <StyledA href="/inventory">재고</StyledA>
                 </StyledRightButton>
