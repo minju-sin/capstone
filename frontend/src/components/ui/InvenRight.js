@@ -38,6 +38,7 @@ function InvenRight({ addItemToInventory }) {
             console.log("왼쪽 재고 화면에 등록하는 로직 구현", response.data);
             addItemToInventory(popup.item, popup.quantity);
             hidePopup(); // 팝업 숨기기
+            window.location.reload(); // 화면 새로고침
         })
         .catch(error => {
             console.error("Error adding item to inventory:", error);
