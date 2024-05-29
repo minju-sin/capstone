@@ -14,6 +14,7 @@ import {
      StyledLeftButton
 } from "../styles/ServiceLeftCSS";
 import { Div } from "../styles/ServiceRightCSS";
+import { StyledA } from "../styles/PosRightCSS";
 
 function ServiceLeft() {
 
@@ -102,7 +103,7 @@ function ServiceLeft() {
 
         <StyledBottomButtons class="bottom-buttons">
                     <StyledLeftButtons class="left-buttons">
-                        <StyledLeftButton>이전[CLEAR]</StyledLeftButton>
+                        <StyledLeftButton><StyledA href="/">이전[CLEAR]</StyledA></StyledLeftButton>
                         <StyledLeftButton>간이영수증 출력</StyledLeftButton>
                     </StyledLeftButtons>
         </StyledBottomButtons>
