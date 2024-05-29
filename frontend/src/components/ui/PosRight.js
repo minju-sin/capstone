@@ -1,4 +1,4 @@
-// ./PosRight.js
+// PosRight.js
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,7 +7,7 @@ import Button from "./Button";
 import CreditCard from "./CreditCard";
 
 
-function PosRight({ addOrder, handleCashButtonClick   }) {
+function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick }) {
     
     const [menuItems, setMenuItems] = useState([]); // 메뉴판 상태
     const [isCreditCardPopupVisible, setIsCreditCardPopupVisible] = useState(false); // 신용카드 
@@ -24,7 +24,7 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
             const response = await axios.get('http://localhost:8080/pos/menu'); // axios를 사용하여 GET 요청을 보냅니다.
             setMenuItems(response.data); // 응답 데이터를 상태에 설정합니다.
         } catch (error) {
-            console.error('Error fetching menu items:', error);
+            console.error('메뉴를 가지고 올 수 없는 오류 발생:', error);
         }
     };
 
@@ -82,7 +82,7 @@ function PosRight({ addOrder, handleCashButtonClick   }) {
                 </StyledRightButton>
                 {/* 신용카드 팝업창 */}
                 {isCreditCardPopupVisible && 
-                    <CreditCard onClose={closeCreditCardPopup} />
+                    <CreditCard onClose={closeCreditCardPopup} handleCreditCardButtonClick={handleCreditCardButtonClick} />
                 }
                 <StyledRightButton class="button merged_col">
                     <StyledA href="/inventory">재고</StyledA>

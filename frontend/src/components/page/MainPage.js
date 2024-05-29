@@ -28,6 +28,12 @@ function MainPage() {
       setReceivedAmount(totalAmount);
     };
 
+    // 신용카드 버튼 클릭 시 실행되는 함수
+    const handleCreditCardButtonClick = () => {
+      const totalAmount = calculateTotalPrice();
+      setReceivedAmount(totalAmount);
+    };
+
     // 주문목록 총 금액 함수
     const calculateTotalPrice = () => {
       let totalPrice = 0;
@@ -43,7 +49,11 @@ function MainPage() {
         <Header/>
         <StyledContainer class="container">
             <PosLeft orders={orders} clearOrders={clearOrders} receivedAmount={receivedAmount}/>
-            <PosRight addOrder={addOrder} handleCashButtonClick={handleCashButtonClick}/>
+            <PosRight 
+              addOrder={addOrder} 
+              handleCashButtonClick={handleCashButtonClick}
+              handleCreditCardButtonClick={handleCreditCardButtonClick}
+            />
         </StyledContainer>
       </StyledBody>
     );
