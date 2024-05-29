@@ -12,8 +12,8 @@ function InvenLeft({ inventoryItems }) {
                 </StyledTr>
 
                 {inventoryItems.map(item => (
-                    <StyledTr key={item.item}>
-                        <StyledInvenThTd>{item.item}</StyledInvenThTd>
+                    <StyledTr key={item.idinventory}>
+                        <StyledInvenThTd>{item.idinventory}</StyledInvenThTd>
                         <StyledInvenThTd>{item.quantity}</StyledInvenThTd>
                     </StyledTr>
                 ))}
