@@ -3,11 +3,14 @@
 import React from "react";
 import { Div, StyledArrowButton, StyledArrowButtons, StyledDoubleArrowButton, StyledRSection, StyledRhButton, StyledRightButton, StyledRightButtons, StyledRightHeader, StyledTable, StyledTd, StyledTh, Tr } from "../styles/ServiceRightCSS";
 import { StyledBottomButtons, StyledFormGroup, StyledInput, StyledLabel } from "../styles/ServiceLeftCSS";
+import { StyledConditionInput, StyledPopUp, StyledPopUpClose, StyledPopUpHeader } from "../styles/ServiceLeftCSS";
+import Receipt from "./Receipt";
 
 function ServiceRight() {
 
     return (
-      <StyledRSection>
+    <>
+      <StyledRSection class="right-section">
         <Div>
             <StyledRightHeader class="right-header">
                 <StyledRhButton>등록 취소 조회</StyledRhButton>
@@ -96,6 +99,18 @@ function ServiceRight() {
         </StyledBottomButtons>
 
       </StyledRSection>
+
+      <StyledPopUp id="popup" class="popup">
+        <StyledPopUpHeader class="popup-header">
+            <span>영수증</span>
+            <StyledPopUpClose class="popup-close">×</StyledPopUpClose>
+        </StyledPopUpHeader>
+        <iframe src={Receipt} style={{width: '500px', height: '500px', border: 'none'}}></iframe>
+        <Div style={{ textAlign: 'right', marginTop: '20px'}}>
+            <StyledConditionInput id="condition-input">조건 입력</StyledConditionInput>
+        </Div>
+      </StyledPopUp>
+    </>
     );
 }
 

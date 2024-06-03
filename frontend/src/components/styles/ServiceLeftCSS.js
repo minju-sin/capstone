@@ -88,3 +88,73 @@ export const StyledLeftButton = styled.button`
     cursor: pointer;
     margin-right: 10px;
 `;
+
+/* 영수증 */
+export const StyledPopUp = styled.div`
+    display: none;
+    position: fixed;
+    top: 48%;
+    left: 0.5%;
+    transform: translateY(-50%);
+    width: 41.5%; 
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 9999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const StyledPopUpHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+`;
+
+export const StyledPopUpImg = styled.img`
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+`;
+
+export const StyledPopUpClose = styled.button`
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    background: none;
+    border: none;
+`;
+
+export const StyledConditionInput = styled.button`
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: 1px solid #999;
+    border-radius: 4px;
+`;
+
+export const ReceiptContent = styled.div`
+    font-size: 12px;
+    line-height: 1.5;
+`;
+
+export const ReceiptSection = styled.div`
+    margin-bottom : 10px;
+`;
+
+export const Hr = styled.hr`
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 5px 0;
+`;
+
+export const ReceiptTitle = styled.div`
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+    margin-bottom: 5px;
+`;
