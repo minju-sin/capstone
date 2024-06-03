@@ -19,6 +19,9 @@ app.use("/pos", require("./routes/posRoute"));
 
 // 재고 
 app.use("/inventory", require("./routes/invenRoute"));
+
+// 주문 내역
+app.use("/order", require("./routes/orderRoute"));
   
 
 app.listen(8080, () => {		// 8080번 포트로 서버 실행
