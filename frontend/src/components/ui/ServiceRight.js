@@ -1,12 +1,20 @@
 // ./ServiceRight.js
 
-import React from "react";
+import React, { useState } from "react";
 import { Div, StyledArrowButton, StyledArrowButtons, StyledDoubleArrowButton, StyledRSection, StyledRhButton, StyledRightButton, StyledRightButtons, StyledRightHeader, StyledTable, StyledTd, StyledTh, Tr } from "../styles/ServiceRightCSS";
-import { StyledBottomButtons, StyledFormGroup, StyledInput, StyledLabel } from "../styles/ServiceLeftCSS";
+import { StyledBottomButtons, StyledConditionInput, StyledFormGroup, StyledInput, StyledLabel, StyledPopUpClose, StyledPopUpHeader } from "../styles/ServiceLeftCSS";
+import Receipt from "./Receipt";
 
 function ServiceRight() {
+    const [showPopup, setShowPopup] = useState(false); // 팝업 표시 상태를 관리하는 useState 훅
+
+    // 팝업을 표시하는 함수
+    const handleRowClick = () => {
+        setShowPopup(true);
+    };
 
     return (
+    <>
       <StyledRSection class="right-section">
         <Div>
             <StyledRightHeader class="right-header">
@@ -27,7 +35,7 @@ function ServiceRight() {
                         <StyledTh>거래 형태</StyledTh>
                         <StyledTh>금액</StyledTh>
                     </Tr>
-                    <Tr>
+                    <Tr onClick={handleRowClick}>
                         <StyledTd>1</StyledTd>
                         <StyledTd>01</StyledTd>
                         <StyledTd>12:00</StyledTd>
@@ -95,8 +103,22 @@ function ServiceRight() {
             </StyledRightButtons>
         </StyledBottomButtons>
 
+
       </StyledRSection>
 
+      {showPopup && (
+        <div id="popup" class="popup">
+            <StyledPopUpHeader class="popup-header">
+                <span>영수증</span>
+                <StyledPopUpClose class="popup-close" onClick={() => setShowPopup(false)}>×</StyledPopUpClose>
+            </StyledPopUpHeader>
+            <iframe src={Receipt} title="영수증팝업" style={{width: '500px', height: '500px', border: 'none'}}></iframe>
+            <Div style={{textAlign: 'right', marginTop: '20px'}}>
+                <StyledConditionInput id="condition-input">조건 입력</StyledConditionInput>
+            </Div>
+        </div>
+      )}
+    </>
     );
 }
 
