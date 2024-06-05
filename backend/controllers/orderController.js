@@ -1,9 +1,7 @@
-// ./controllers/orderController.js
-
 const asyncHandler = require('express-async-handler');
 const dbConnect = require('../config/dbConnect');
 
-//  주문내역 저장 API
+// 주문내역 저장 API
 // POST /save
 const orderSave = asyncHandler(async (req, res) => {
     let connection; // 데이터베이스 연결 객체를 담을 변수
@@ -12,15 +10,39 @@ const orderSave = asyncHandler(async (req, res) => {
         // 데이터베이스에 연결
         connection = await dbConnect();
 
-        //const { idmenu, date, totalPrice } = req.body;
+        const { date, totalPrice, items } = req.body;
 
-        // 주문 db - 주문내역 순번, 날짜, 총금액
-        //await connection.query(`INSERT INTO order (idmenu, date, totalPrice) VALUES (?, ?, ?)`, [idmenu, date, totalPrice]);
+        // 트랜잭션 시작
+        await connection.beginTransaction();
 
-        // 주문 메뉴 db - 메뉴명, 수량 
-        
-        
+        // orders 테이블에 주문 정보 저장
+        const [orderResult] = await connection.query(
+            `INSERT INTO orders (date, totalPrice) VALUES (?, ?)`,
+            [date, totalPrice]
+        );
+
+        const orderId = orderResult.insertId;
+
+        // service 테이블에 주문 내역 저장
+        const serviceQueries = items.map(item => {
+            return connection.query(
+                `INSERT INTO service (idorder, idmenu, quantity) VALUES (?, ?, ?)`,
+                [orderId, item.idmenu, 1]
+            );
+        });
+
+        // 모든 쿼리가 완료될 때까지 기다림
+        await Promise.all(serviceQueries);
+
+        // 트랜잭션 커밋
+        await connection.commit();
+
+        res.status(201).json({ success: true, message: '주문표 저장 성공!' });
     } catch (err) {
+        // 오류 발생 시 트랜잭션 롤백
+        if (connection) {
+            await connection.rollback();
+        }
         console.error('오류 발생', err);
         res.status(500).send('서버 에러');
     } finally {

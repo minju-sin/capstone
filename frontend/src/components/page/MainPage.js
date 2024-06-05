@@ -1,6 +1,5 @@
-// ./MainPage.js
-
 import React, { useState } from "react";
+import axios from "axios";
 import Header from "../ui/Header";
 import { StyledBody } from "../styles/HeaderCSS";
 import { StyledContainer } from "../styles/PosLeftCSS";
@@ -8,7 +7,6 @@ import PosLeft from "../ui/PosLeft";
 import PosRight from "../ui/PosRight";
 
 function MainPage() {
-
     const [orders, setOrders] = useState([]); // 메뉴 클릭 시 주문표에 추가되는 기능 
     const [receivedAmount, setReceivedAmount] = useState(0);  // 받은 금액 상태
 
@@ -22,32 +20,55 @@ function MainPage() {
         setOrders([]);
     };
 
+    // 주문 데이터를 백엔드로 전송하는 함수
+    const saveOrder = async () => {
+        const totalAmount = calculateTotalPrice();
+        const orderData = {
+            date: new Date().toISOString().slice(0, 19).replace('T', ' '), // 현재 날짜 및 시간
+            totalPrice: totalAmount,
+            items: orders.map(order => ({ idmenu: order.name, quantity: 1 })) // 각 아이템의 수량은 1로 가정
+        };
+
+        try {
+            const response = await axios.post('http://localhost:8080/order/save', orderData);
+            if (response.data.success) {
+                console.log('주문표 저장 성공');
+                clearOrders(); // 주문 저장 후 주문표 비우기
+            } else {
+                console.error('주문표 저장 실패:', response.data.message);
+            }
+        } catch (error) {
+            console.error('주문표 저장 에러:', error);
+        }
+    };
+
     // 현금 버튼 클릭 시 실행되는 함수
     const handleCashButtonClick = () => {
-      const totalAmount = calculateTotalPrice();
-      setReceivedAmount(totalAmount);
+        const totalAmount = calculateTotalPrice();
+        setReceivedAmount(totalAmount);
+        saveOrder(); // 주문 데이터 저장
     };
 
     // 신용카드 버튼 클릭 시 실행되는 함수
     const handleCreditCardButtonClick = () => {
-      const totalAmount = calculateTotalPrice();
-      setReceivedAmount(totalAmount);
+        const totalAmount = calculateTotalPrice();
+        setReceivedAmount(totalAmount);
+        // 여기서 신용카드 결제 로직을 추가할 수 있습니다.
     };
 
     // 주문목록 총 금액 함수
     const calculateTotalPrice = () => {
-      let totalPrice = 0;
-      orders.forEach(order => {
-          totalPrice += order.price;
-      });
-      return totalPrice;
+        let totalPrice = 0;
+        orders.forEach(order => {
+            totalPrice += order.price;
+        });
+        return totalPrice;
     };
-
 
     return (
       <StyledBody>
         <Header/>
-        <StyledContainer class="container">
+        <StyledContainer className="container">
             <PosLeft orders={orders} clearOrders={clearOrders} receivedAmount={receivedAmount}/>
             <PosRight 
               addOrder={addOrder} 

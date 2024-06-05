@@ -7,6 +7,6 @@ const router = express.Router();
 //  주문표 저장 
 router
 .route("/save")
-    .get(orderSave);
+    .post(orderSave);
 
 module.exports = router;
