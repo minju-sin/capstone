@@ -53,7 +53,7 @@ function MainPage() {
     const handleCreditCardButtonClick = () => {
         const totalAmount = calculateTotalPrice();
         setReceivedAmount(totalAmount);
-        // 여기서 신용카드 결제 로직을 추가할 수 있습니다.
+        saveOrder(); // 주문 데이터 저장
     };
 
     // 주문목록 총 금액 함수
