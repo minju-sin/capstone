@@ -131,8 +131,6 @@ export const StyledPopUpClose = styled.button`
     font-weight: bold;
     background: none;
     border: none;
-    font-family: BMJUA;
-    font-size: 20px;
 `;
 
 export const StyledConditionInput = styled.button`
