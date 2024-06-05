@@ -4,6 +4,8 @@ export const StyledServiceContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: calc(100% - 50px); 
+    font-family: BMJUA;
+    font-size: 20px;
 `;
 
 export const StyledMainContent = styled.div`
@@ -68,6 +70,8 @@ export const StyledServiceButton = styled.button`
     background-color: #ddd;
     border: none;
     margin-top: 5px;
+    font-family: BMJUA;
+    font-size: 20px;
 `;
 
 export const StyledBottomButtons = styled.div`
@@ -87,6 +91,8 @@ export const StyledLeftButton = styled.button`
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
+    font-family: BMJUA;
+    font-size: 20px;
 `;
 
 /* 영수증 */
@@ -125,6 +131,8 @@ export const StyledPopUpClose = styled.button`
     font-weight: bold;
     background: none;
     border: none;
+    font-family: BMJUA;
+    font-size: 20px;
 `;
 
 export const StyledConditionInput = styled.button`
@@ -135,6 +143,8 @@ export const StyledConditionInput = styled.button`
     background-color: #ddd;
     border: 1px solid #999;
     border-radius: 4px;
+    font-family: BMJUA;
+    font-size: 20px;
 `;
 
 export const ReceiptContent = styled.div`

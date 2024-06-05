@@ -14,7 +14,7 @@ export const StyledRSection = styled.div`
 export const StyledRightHeader = styled.div`
     display: flex;
     justify-content: flex-end;
-     align-items: center;
+    align-items: center;
     margin-bottom: 15px;
 `;
 
@@ -24,6 +24,8 @@ export const StyledRhButton = styled.button`
     border: 1px solid #999;
     border-radius: 4px;
     cursor: pointer;
+    font-family: BMJUA;
+    font-size: 20px;
 `;
 
 export const StyledTable = styled.table`
@@ -87,4 +89,6 @@ export const StyledRightButton = styled.button`
     cursor: pointer;
     margin-left: 10px;
     justify-content: flex-end;
+    font-family: BMJUA;
+    font-size: 20px;
 `;
