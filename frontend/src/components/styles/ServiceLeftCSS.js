@@ -127,7 +127,7 @@ export const StyledPopUpImg = styled.img`
 
 export const StyledPopUpClose = styled.button`
     cursor: pointer;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     background: none;
     border: none;
@@ -163,6 +163,14 @@ export const Hr = styled.hr`
 export const ReceiptTitle = styled.div`
     text-align: center;
     font-weight: bolder;
-    font-size: large;
+    font-size: 30px;
     margin-bottom: 5px;
+`;
+
+export const Div = styled.div`
+    font-size: 15px;
+`;
+
+export const Span = styled.span`
+    font-size: 15px;
 `;
