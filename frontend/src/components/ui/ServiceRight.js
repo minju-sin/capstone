@@ -1,19 +1,38 @@
 // ./ServiceRight.js
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Div, StyledArrowButton, StyledArrowButtons, StyledDoubleArrowButton, StyledRSection, StyledRhButton, StyledRightButton, StyledRightButtons, StyledRightHeader, StyledTable, StyledTd, StyledTh, Tr } from "../styles/ServiceRightCSS";
 import { StyledBottomButtons, StyledConditionInput, StyledFormGroup, StyledInput, StyledLabel, StyledPopUpClose, StyledPopUpHeader } from "../styles/ServiceLeftCSS";
 import ReactDOMServer from "react-dom/server";
 import Receipt from "./Receipt";
+import axios from "axios";
 
 // Receipt 컴포넌트를 HTML 문자열로 변환
 const receiptHTML = ReactDOMServer.renderToStaticMarkup(<Receipt />);
 
 function ServiceRight() {
+    const [receipts, setReceipts] = useState([]); // 영수증 데이터를 상태로 관리
+    const [setSelectedReceipt] = useState(null); // 선택한 영수증 데이터를 상태로 관리
     const [showPopup, setShowPopup] = useState(false); // 팝업 표시 상태를 관리하는 useState 훅
 
-    // 팝업을 표시하는 함수
-    const handleRowClick = () => {
+    // 컴포넌트가 마운트될 때 영수증 데이터를 가져옴
+    useEffect(() => {
+        fetchReceipts();
+    }, []);
+
+    // API 호출하여 영수증 데이터를 가져오는 함수
+    const fetchReceipts = async () => {
+        try {
+        const response = await axios.get("http://localhost:8080/order/show"); // 영수증 조회 API 호출
+        setReceipts(response.data); // 가져온 데이터를 상태에 저장
+        } catch (error) {
+        console.error("영수증 데이터를 가져오는 중 오류 발생:", error);
+        }
+    };
+
+    // 테이블 행 클릭 시 팝업을 표시하고 선택한 영수증 데이터를 설정하는 함수
+    const handleRowClick = (receipt) => {
+        setSelectedReceipt(receipt);
         setShowPopup(true);
     };
 
@@ -30,83 +49,49 @@ function ServiceRight() {
                     <StyledInput type="text" id="search-number"/>
             </StyledFormGroup>
 
-            <Div class="table-container">
-                <StyledTable>
-                    <Tr>
-                        <StyledTh>NO</StyledTh>
-                        <StyledTh>POS</StyledTh>
-                        <StyledTh>거래 시간</StyledTh>
-                        <StyledTh>거래 형태</StyledTh>
-                        <StyledTh>금액</StyledTh>
-                    </Tr>
-                    <Tr onClick={handleRowClick}>
-                        <StyledTd>1</StyledTd>
-                        <StyledTd>01</StyledTd>
-                        <StyledTd>12:00</StyledTd>
-                        <StyledTd>현금</StyledTd>
-                        <StyledTd>10,000</StyledTd>
-                    </Tr>
-                    <Tr>
-                        <StyledTd>2</StyledTd>
-                        <StyledTd>01</StyledTd>
-                        <StyledTd>12:30</StyledTd>
-                        <StyledTd>현금</StyledTd>
-                        <StyledTd>5,000</StyledTd>
-                    </Tr>
-                    <Tr>
-                        <StyledTd>3</StyledTd>
-                        <StyledTd>01</StyledTd>
-                        <StyledTd>13:00</StyledTd>
-                        <StyledTd>현금</StyledTd>
-                        <StyledTd>20,000</StyledTd>
-                    </Tr>
-                    <Tr>
-                        <StyledTd>4</StyledTd>
-                        <StyledTd>01</StyledTd>
-                        <StyledTd>13:30</StyledTd>
-                        <StyledTd>카드</StyledTd>
-                        <StyledTd>15,000</StyledTd>
-                    </Tr>
-                    <Tr>
-                        <StyledTd>5</StyledTd>
-                        <StyledTd>01</StyledTd>
-                        <StyledTd>14:00</StyledTd>
-                        <StyledTd>카드</StyledTd>
-                        <StyledTd>25,000</StyledTd>
-                    </Tr>
-                    <Tr>
-                        <StyledTd>6</StyledTd>
-                        <StyledTd>01</StyledTd>
-                        <StyledTd>14:30</StyledTd>
-                        <StyledTd>카드</StyledTd>
-                        <StyledTd>30,000</StyledTd>
-                    </Tr>
-                    <Tr>
-                        <StyledTd>7</StyledTd>
-                        <StyledTd>01</StyledTd>
-                        <StyledTd>15:00</StyledTd>
-                        <StyledTd>현금</StyledTd>
-                        <StyledTd>35,000</StyledTd>
-                    </Tr>
-                </StyledTable>
+            <Div className="table-container">
+            <StyledTable>
+              <thead>
+                <Tr>
+                  <StyledTh>NO</StyledTh>
+                  <StyledTh>POS</StyledTh>
+                  <StyledTh>거래 시간</StyledTh>
+                  <StyledTh>거래 형태</StyledTh>
+                  <StyledTh>금액</StyledTh>
+                </Tr>
+              </thead>
+              <tbody>
+                {receipts.map((receipt, index) => (
+                  <Tr key={index} onClick={() => handleRowClick(receipt)}>
+                    <StyledTd>{receipt.idorder}</StyledTd>
+                    <StyledTd>01</StyledTd>
+                    <StyledTd>{new Date(receipt.date).toLocaleString()}</StyledTd>
+                    <StyledTd>현금</StyledTd>
+                    <StyledTd>{receipt.totalPrice.toLocaleString()} 원</StyledTd>
+                  </Tr>
+                ))}
+              </tbody>
+            </StyledTable>
 
-                <StyledArrowButtons class="arrow-buttons">
-                    <StyledDoubleArrowButton class="double">≪</StyledDoubleArrowButton>
-                    <StyledArrowButton>{'<'}</StyledArrowButton>
-                    <StyledArrowButton>{'>'}</StyledArrowButton>
-                    <StyledDoubleArrowButton class="double">≫</StyledDoubleArrowButton>
-                </StyledArrowButtons>
-            </Div>
-            <p>※조회번호에 해당 라인을 입력 후 [반복/입력]키를 누르거나 화면에서 해당 항목을 선택하시면 왼쪽에 선택된 영수증 팝업이 보여집니다.</p>
+            <StyledArrowButtons className="arrow-buttons">
+              <StyledDoubleArrowButton className="double">≪</StyledDoubleArrowButton>
+              <StyledArrowButton>{"<"}</StyledArrowButton>
+              <StyledArrowButton>{">"}</StyledArrowButton>
+              <StyledDoubleArrowButton className="double">≫</StyledDoubleArrowButton>
+            </StyledArrowButtons>
+          </Div>
+          <p>
+            ※조회번호에 해당 라인을 입력 후 [반복/입력]키를 누르거나 화면에서 해당
+            항목을 선택하시면 왼쪽에 선택된 영수증 팝업이 보여집니다.
+          </p>
         </Div>
 
-        <StyledBottomButtons class="bottom-buttons" style={{display: 'flex', justifyContent: 'flex-end'}}>
-            <StyledRightButtons class="right-buttons">
-                <StyledRightButton style={{background: 'red'}}>환불</StyledRightButton>
-                <StyledRightButton>인쇄</StyledRightButton>
-            </StyledRightButtons>
+        <StyledBottomButtons className="bottom-buttons" style={{ display: "flex", justifyContent: "flex-end" }}>
+          <StyledRightButtons className="right-buttons">
+            <StyledRightButton style={{ background: "red" }}>환불</StyledRightButton>
+            <StyledRightButton>인쇄</StyledRightButton>
+          </StyledRightButtons>
         </StyledBottomButtons>
-
 
       </StyledRSection>
 
