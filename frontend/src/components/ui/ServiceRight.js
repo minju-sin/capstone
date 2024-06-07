@@ -111,7 +111,7 @@ function ServiceRight() {
             </StyledPopUpHeader>
 
             {/* 영수증 팝업 */}
-            <Receipt receiptData={selectedReceipt} />
+            <Receipt receiptData={selectedReceipt}/>
 
             <Div style={{textAlign: 'right', marginTop: '20px'}}>
                 <StyledConditionInput id="condition-input">조건 입력</StyledConditionInput>

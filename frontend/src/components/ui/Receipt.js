@@ -8,7 +8,7 @@ function Receipt({ receiptData }) {
     const { idorder, date, total, transactionType, items } = receiptData;
 
   return (
-    <ReceiptContent style={{maxHeight: '500px', maxWidth: '500px'}}>
+    <ReceiptContent style={{maxHeight: '500px', width: '500px'}}>
         <ReceiptSection>
             <ReceiptTitle>말하는 감쟈</ReceiptTitle>
             <div>주소: 엄광로 176</div>
