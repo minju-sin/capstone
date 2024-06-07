@@ -75,14 +75,27 @@ function Receipt({ receiptData }) {
                 <span>▪️ {transactionType} 매출전표(고객용)</span>
         </ReceiptSection>
 
-        <ReceiptSection>
-            <span>[카드사] 국민카드</span><br/>
-            <span>[카드번호] 1234-5678-****-****</span><br/>
-            <span>[승인금액] {total.toLocaleString()} 원</span><br/>
-            <span>[승인번호] 75513401</span><br/>
-            <span>[할부] 일시불</span><br/>
-            <span>[승인일자] {new Date(date).toLocaleString()}</span>
-        </ReceiptSection>
+        {/* 거래 유형이 신용카드일 때 */}
+        {transactionType === "신용카드" && (
+                <ReceiptSection>
+                    <span>[카드사] 국민카드</span><br />
+                    <span>[카드번호] 1234-5678-****-****</span><br />
+                    <span>[승인금액] {total.toLocaleString()} 원</span><br />
+                    <span>[승인번호] 75513401</span><br />
+                    <span>[할부] 일시불</span><br />
+                    <span>[승인일자] {new Date(date).toLocaleString()}</span>
+                </ReceiptSection>
+        )}
+
+        {/* 거래 유형이 현금일 때 */}
+        {transactionType === "현금" && (
+                <ReceiptSection>
+                    <span>[승인금액] {total.toLocaleString()} 원</span><br />
+                    <span>[승인번호] 75513401</span><br />
+                    <span>[할부] 일시불</span><br />
+                    <span>[승인일자] {new Date(date).toLocaleString()}</span>
+                </ReceiptSection>
+        )}
         <Hr/>
         <Hr/>
         <ReceiptSection style={{textAlign: 'center'}}>
