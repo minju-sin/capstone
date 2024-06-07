@@ -5,7 +5,7 @@ import Barcode from "../images/barcode.png";
 import { Hr, ReceiptContent, ReceiptSection, ReceiptTitle, StyledPopUpImg } from "../styles/ServiceLeftCSS";
 
 function Receipt({ receiptData }) {
-  const { idorder, date, total, items } = receiptData;
+    const { idorder, date, total, items } = receiptData;
 
   return (
     <ReceiptContent style={{maxHeight: '500px', maxWidth: '500px'}}>
@@ -30,7 +30,7 @@ function Receipt({ receiptData }) {
             <span style={{flex: '1', textAlign: 'right'}}>금액</span>
         </ReceiptSection>
         <Hr/>
-      
+
         {items.map((item, index) => (
             <ReceiptSection style={{display: 'flex'}}>
                 <span style={{flex: '2'}}>{item.name}</span>
@@ -39,9 +39,40 @@ function Receipt({ receiptData }) {
                 <span style={{flex: '1', textAlign: 'right'}}>{item.price.toLocaleString()} 원</span>
             </ReceiptSection>
         ))}
+        <Hr/>
+
+        <ReceiptSection style={{display: 'flex'}}>
+            <span style={{flex: '2'}}>합계</span>
+            <span style={{flex: '1', textAlign: 'center'}}></span>
+            <span style={{flex: '1', textAlign: 'center'}}>0</span>
+            <span style={{flex: '1', textAlign: 'right'}}>{total.toLocaleString()}</span>
+        </ReceiptSection>
+        <Hr/>
+
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <span style={{fontWeight: 'bold'}}>결제금액</span>
+            <span>{total.toLocaleString()}</span>
+        </ReceiptSection>
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <span>[부가세 포함]</span>
+            <span>(631)</span>
+        </ReceiptSection>
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <span>[보증금 포함]</span>
+            <span>(0)</span>
+        </ReceiptSection>
+        <Hr/>
+
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <span>[신용카드]</span>
+            <span>{total.toLocaleString()}</span>
+        </ReceiptSection>
+        <Hr/>
+        <Hr/>
+
 
         <ReceiptSection>
-                <span>● 신용카드 매출전표(고객용)</span>
+                <span>▪️ 신용카드 매출전표(고객용)</span>
         </ReceiptSection>
 
         <ReceiptSection>
@@ -50,7 +81,7 @@ function Receipt({ receiptData }) {
             <span>[승인금액] {total.toLocaleString()} 원</span><br/>
             <span>[승인번호] 75513401</span><br/>
             <span>[할부] 일시불</span><br/>
-            <span>[승인일자] 20240524</span>
+            <span>[승인일자] {new Date(date).toLocaleString()}</span>
         </ReceiptSection>
         <Hr/>
         <Hr/>
