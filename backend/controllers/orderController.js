@@ -10,15 +10,15 @@ const orderSave = asyncHandler(async (req, res) => {
         // 데이터베이스에 연결
         connection = await dbConnect();
 
-        const { date, totalPrice, items } = req.body;
+        const { date, totalPrice, items, transactionType } = req.body;
 
         // 트랜잭션 시작
         await connection.beginTransaction();
 
         // orders 테이블에 주문 정보 저장
         const [orderResult] = await connection.query(
-            `INSERT INTO orders (date, totalPrice) VALUES (?, ?)`,
-            [date, totalPrice]
+            `INSERT INTO orders (date, totalPrice, transactionType) VALUES (?, ?, ?)`,
+            [date, totalPrice, transactionType]
         );
 
         const orderId = orderResult.insertId;
@@ -62,8 +62,8 @@ const orderShow = asyncHandler(async (req, res) => {
         // 데이터베이스에 연결
         connection = await dbConnect();
 
-        // 'orders' 테이블에서 순번, 거래시간, 총금액 보여주기 
-        const [results] = await connection.query('SELECT idorder, date, totalPrice FROM orders');
+        // 'orders' 테이블에서 순번, 거래시간, 총금액, 거래유형 보여주기 
+        const [results] = await connection.query('SELECT idorder, date, totalPrice, transactionType  FROM orders');
 
         // 쿼리 결과를 JSON 형식으로 응답
         res.json(results);
@@ -94,7 +94,7 @@ const orderReceipt = asyncHandler(async (req, res) => {
         const [orderDetails] = await connection.query('SELECT s.idorder, s.idmenu, s.quantity, m.pricemenu FROM service s INNER JOIN menu m ON s.idmenu = m.idmenu WHERE s.idorder = ?', [idorder]);
 
         // 'order' 테이블에서 주문 정보 조회
-        const [orderInfo] = await connection.query('SELECT idorder, date, totalPrice FROM `orders` WHERE idorder = ?', [idorder]);
+        const [orderInfo] = await connection.query('SELECT idorder, date, totalPrice, transactionType FROM `orders` WHERE idorder = ?', [idorder]);
 
         if (!orderInfo.length) {
             return res.status(404).json({ message: '영수증을 찾을 수 없습니다.' });
@@ -105,6 +105,7 @@ const orderReceipt = asyncHandler(async (req, res) => {
             idorder: orderInfo[0].idorder,
             date: orderInfo[0].date,
             total: orderInfo[0].totalPrice,
+            transactionType: orderInfo[0].transactionType,
             items: orderDetails.map(item => ({
                 name: item.idmenu, // 메뉴 이름은 menu 테이블의 기본키로 service의 외래키로 지정함
                 quantity: item.quantity,

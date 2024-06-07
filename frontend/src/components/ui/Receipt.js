@@ -5,7 +5,7 @@ import Barcode from "../images/barcode.png";
 import { Hr, ReceiptContent, ReceiptSection, ReceiptTitle, StyledPopUpImg } from "../styles/ServiceLeftCSS";
 
 function Receipt({ receiptData }) {
-    const { idorder, date, total, items } = receiptData;
+    const { idorder, date, total, transactionType, items } = receiptData;
 
   return (
     <ReceiptContent style={{maxHeight: '500px', maxWidth: '500px'}}>
@@ -64,7 +64,7 @@ function Receipt({ receiptData }) {
         <Hr/>
 
         <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
-            <span>[신용카드]</span>
+            <span>[{transactionType}]</span>
             <span>{total.toLocaleString()}</span>
         </ReceiptSection>
         <Hr/>
@@ -72,7 +72,7 @@ function Receipt({ receiptData }) {
 
 
         <ReceiptSection>
-                <span>▪️ 신용카드 매출전표(고객용)</span>
+                <span>▪️ {transactionType} 매출전표(고객용)</span>
         </ReceiptSection>
 
         <ReceiptSection>

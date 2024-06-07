@@ -74,7 +74,7 @@ function ServiceRight() {
                     <StyledTd>{receipt.idorder}</StyledTd>
                     <StyledTd>01</StyledTd>
                     <StyledTd>{new Date(receipt.date).toLocaleString()}</StyledTd>
-                    <StyledTd>현금</StyledTd>
+                    <StyledTd>{receipt.transactionType}</StyledTd>
                     <StyledTd>{receipt.totalPrice.toLocaleString()} 원</StyledTd>
                   </Tr>
                 ))}
