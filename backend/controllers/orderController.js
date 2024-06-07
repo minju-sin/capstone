@@ -78,4 +78,52 @@ const orderShow = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { orderSave, orderShow };
+
+// 영수증 상세 조회 API
+// GET /receipt
+const orderReceipt = asyncHandler(async (req, res) => {
+    let connection; // 데이터베이스 연결 객체를 담을 변수
+
+    try {
+        const { idorder } = req.query; // 요청 쿼리에서 idorder를 가져옴
+
+        // 데이터베이스에 연결
+        connection = await dbConnect();
+
+        // 'service' 테이블에서 주문순번에 해당하는 영수증 상세 정보 조회
+        const [orderDetails] = await connection.query('SELECT s.idorder, s.idmenu, s.quantity, m.pricemenu FROM service s INNER JOIN menu m ON s.idmenu = m.idmenu WHERE s.idorder = ?', [idorder]);
+
+        // 'order' 테이블에서 주문 정보 조회
+        const [orderInfo] = await connection.query('SELECT idorder, date, totalPrice FROM `orders` WHERE idorder = ?', [idorder]);
+
+        if (!orderInfo.length) {
+            return res.status(404).json({ message: '영수증을 찾을 수 없습니다.' });
+        }
+
+        // 영수증 상세 정보를 조합하여 응답 데이터 생성
+        const receiptData = {
+            idorder: orderInfo[0].idorder,
+            date: orderInfo[0].date,
+            total: orderInfo[0].totalPrice,
+            items: orderDetails.map(item => ({
+                name: item.idmenu, // 메뉴 이름은 menu 테이블의 기본키로 service의 외래키로 지정함
+                quantity: item.quantity,
+                discount: 0, // 할인 정보는 없으므로 0으로 설정
+                price: item.pricemenu  // 각 메뉴에 대한 가격은 idmenu 외래키를 이용해서 pricemenu 정보를 얻음
+            }))
+        };
+
+        // 쿼리 결과를 JSON 형식으로 응답
+        res.json(receiptData);
+    } catch (err) {
+        console.error('오류 발생', err);
+        res.status(500).send('서버 에러');
+    } finally {
+        // 데이터베이스 연결을 종료
+        if (connection) {
+            await connection.end();
+        }
+    }
+});
+
+module.exports = { orderSave, orderShow, orderReceipt };

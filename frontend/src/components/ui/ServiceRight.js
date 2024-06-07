@@ -12,8 +12,9 @@ const receiptHTML = ReactDOMServer.renderToStaticMarkup(<Receipt />);
 
 function ServiceRight() {
     const [receipts, setReceipts] = useState([]); // 영수증 데이터를 상태로 관리
-    const [setSelectedReceipt] = useState(null); // 선택한 영수증 데이터를 상태로 관리
+    const [selectedReceipt, setSelectedReceipt] = useState(null); // 영수증 상세 조회 
     const [showPopup, setShowPopup] = useState(false); // 팝업 표시 상태를 관리하는 useState 훅
+
 
     // 컴포넌트가 마운트될 때 영수증 데이터를 가져옴
     useEffect(() => {
@@ -30,10 +31,16 @@ function ServiceRight() {
         }
     };
 
+
     // 테이블 행 클릭 시 팝업을 표시하고 선택한 영수증 데이터를 설정하는 함수
-    const handleRowClick = (receipt) => {
-        setSelectedReceipt(receipt);
-        setShowPopup(true);
+    const handleRowClick = async (idorder) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/order/receipt?idorder=${idorder}`);
+            setSelectedReceipt(response.data);
+            setShowPopup(true);
+        } catch (error) {
+            console.error("상세 영수증 데이터 가져오는 중 오류 발생:", error);
+        }
     };
 
     return (
@@ -62,7 +69,7 @@ function ServiceRight() {
               </thead>
               <tbody>
                 {receipts.map((receipt, index) => (
-                  <Tr key={index} onClick={() => handleRowClick(receipt)}>
+                  <Tr key={index} onClick={() => handleRowClick(receipt.idorder)}>
                     <StyledTd>{receipt.idorder}</StyledTd>
                     <StyledTd>01</StyledTd>
                     <StyledTd>{new Date(receipt.date).toLocaleString()}</StyledTd>

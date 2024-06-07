@@ -1,7 +1,7 @@
 // ./routes/orderRoute.js
 
 const express = require("express");
-const {orderSave, orderShow} = require("../controllers/orderController");
+const {orderSave, orderShow, orderReceipt} = require("../controllers/orderController");
 const router = express.Router();
 
 //  주문표 저장 
@@ -13,5 +13,10 @@ router
 router
 .route("/show")
     .get(orderShow);
+
+// 영수증 상세 조회
+router
+.route("/receipt")
+    .get(orderReceipt);
 
 module.exports = router;
