@@ -173,8 +173,6 @@ export const Div = styled.div`
 
 export const Span = styled.span`
     font-size: 15px;
-<<<<<<< HEAD
+
 `;
-=======
-`;
->>>>>>> 5eb357fd93dbdc316c7163cd4b1b28f61051182d
+
