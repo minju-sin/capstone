@@ -3,12 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { Div, StyledArrowButton, StyledArrowButtons, StyledDoubleArrowButton, StyledRSection, StyledRhButton, StyledRightButton, StyledRightButtons, StyledRightHeader, StyledTable, StyledTd, StyledTh, Tr } from "../styles/ServiceRightCSS";
 import { StyledBottomButtons, StyledConditionInput, StyledFormGroup, StyledInput, StyledLabel, StyledPopUpClose, StyledPopUpHeader } from "../styles/ServiceLeftCSS";
-import ReactDOMServer from "react-dom/server";
 import Receipt from "./Receipt";
 import axios from "axios";
 
 // Receipt 컴포넌트를 HTML 문자열로 변환
-const receiptHTML = ReactDOMServer.renderToStaticMarkup(<Receipt />);
+// const receiptHTML = ReactDOMServer.renderToStaticMarkup(<Receipt />);
 
 function ServiceRight() {
     const [receipts, setReceipts] = useState([]); // 영수증 데이터를 상태로 관리
@@ -75,7 +74,7 @@ function ServiceRight() {
                     <StyledTd>{receipt.idorder}</StyledTd>
                     <StyledTd>01</StyledTd>
                     <StyledTd>{new Date(receipt.date).toLocaleString()}</StyledTd>
-                    <StyledTd>현금</StyledTd>
+                    <StyledTd>{receipt.transactionType}</StyledTd>
                     <StyledTd>{receipt.totalPrice.toLocaleString()} 원</StyledTd>
                   </Tr>
                 ))}
@@ -110,7 +109,10 @@ function ServiceRight() {
                 <span>영수증</span>
                 <StyledPopUpClose class="popup-close" onClick={() => setShowPopup(false)}>×</StyledPopUpClose>
             </StyledPopUpHeader>
-            <iframe  srcDoc={`<html><body>${receiptHTML}</body></html>`} title="영수증팝업" style={{width: '500px', height: '500px', border: 'none'}}></iframe>
+
+            {/* 영수증 팝업 */}
+            <Receipt receiptData={selectedReceipt}/>
+
             <Div style={{textAlign: 'right', marginTop: '20px'}}>
                 <StyledConditionInput id="condition-input">조건 입력</StyledConditionInput>
             </Div>

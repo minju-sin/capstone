@@ -21,11 +21,12 @@ function MainPage() {
     };
 
     // 주문 데이터를 백엔드로 전송하는 함수
-    const saveOrder = async () => {
+    const saveOrder = async (transactionType) => { // 거래 형태를 매개변수로 추가
         const totalAmount = calculateTotalPrice();
         const orderData = {
             date: new Date().toISOString().slice(0, 19).replace('T', ' '), // 현재 날짜 및 시간
             totalPrice: totalAmount,
+            transactionType, // 거래 형태 추가
             items: orders.map(order => ({ idmenu: order.name, quantity: 1 })) // 각 아이템의 수량은 1로 가정
         };
 
@@ -46,14 +47,14 @@ function MainPage() {
     const handleCashButtonClick = () => {
         const totalAmount = calculateTotalPrice();
         setReceivedAmount(totalAmount);
-        saveOrder(); // 주문 데이터 저장
+        saveOrder("현금"); // 주문 데이터 저장 시 거래 형태를 "현금"으로 설정
     };
 
     // 신용카드 버튼 클릭 시 실행되는 함수
     const handleCreditCardButtonClick = () => {
         const totalAmount = calculateTotalPrice();
         setReceivedAmount(totalAmount);
-        saveOrder(); // 주문 데이터 저장
+        saveOrder("신용카드"); // 주문 데이터 저장 시 거래 형태를 "신용카드"로 설정
     };
 
     // 주문목록 총 금액 함수

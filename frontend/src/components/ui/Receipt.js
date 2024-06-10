@@ -2,101 +2,108 @@
 
 import React from "react";
 import Barcode from "../images/barcode.png";
-import { Hr, ReceiptContent, ReceiptSection, ReceiptTitle, StyledPopUpImg } from "../styles/ServiceLeftCSS";
+import { Div, Hr, ReceiptContent, ReceiptSection, ReceiptTitle, Span, StyledPopUpImg } from "../styles/ServiceLeftCSS";
 
-function Receipt() {
+function Receipt({ receiptData }) {
+    const { idorder, date, total, transactionType, items } = receiptData;
 
-    return (
-        <ReceiptContent style={{maxHeight: '500px', maxWidth: '500px'}}>
-            <ReceiptSection>
-                <ReceiptTitle>말하는 감쟈</ReceiptTitle>
-                <div>주소: 엄광로 176</div>
-                <div>사업자 번호: 202-13-****</div>
-                <div>홈페이지: http://www.talkingpotato.com</div>
-            </ReceiptSection>
+  return (
+    <ReceiptContent style={{maxHeight: '500px', width: '500px'}}>
+        <ReceiptSection>
+            <ReceiptTitle>말하는 감쟈</ReceiptTitle>
+            <Div>주소: 엄광로 176</Div>
+            <Div>사업자 번호: 202-13-****</Div>
+            <Div>홈페이지: http://www.talkingpotato.com</Div>
+        </ReceiptSection>
 
-            <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
-                <span>POS: 01</span>
-                <span>2024-05-24 22:52:55</span>
-            </ReceiptSection>
-            <Hr/>
-            <Hr/>
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Span>주문번호: {idorder}</Span>
+            <Span>{new Date(date).toLocaleString()}</Span>
+        </ReceiptSection>
+        <Hr/>
+        <Hr/>
 
+        <ReceiptSection style={{display: 'flex'}}>
+            <Span style={{flex: '2'}}>상품</Span>
+            <Span style={{flex: '1', textAlign: 'center'}}>수량</Span>
+            <Span style={{flex: '1', textAlign: 'center'}}>할인</Span>
+            <Span style={{flex: '1', textAlign: 'right'}}>금액</Span>
+        </ReceiptSection>
+        <Hr/>
+
+        {items.map((item, index) => (
             <ReceiptSection style={{display: 'flex'}}>
-                <span style={{flex: '2'}}>상품</span>
-                <span style={{flex: '1', textAlign: 'center'}}>수량</span>
-                <span style={{flex: '1', textAlign: 'center'}}>할인</span>
-                <span style={{flex: '1', textAlign: 'right'}}>금액</span>
+                <Span style={{flex: '2'}}>{item.name}</Span>
+                <Span style={{flex: '1', textAlign: 'center'}}>{item.quantity}</Span>
+                <Span style={{flex: '1', textAlign: 'center'}}>0</Span>
+                <Span style={{flex: '1', textAlign: 'right'}}>{item.price.toLocaleString()} 원</Span>
             </ReceiptSection>
-            <Hr/>
+        ))}
+        <Hr/>
 
-            <ReceiptSection style={{display: 'flex'}}>
-                <span style={{flex: '2'}}>카페라떼</span>
-                <span style={{flex: '1', textAlign: 'center'}}>1</span>
-                <span style={{flex: '1', textAlign: 'center'}}>0</span>
-                <span style={{flex: '1', textAlign: 'right'}}>3,500</span>
-            </ReceiptSection>
-            <ReceiptSection style={{display: 'flex'}}>
-                <span style={{flex: '2'}}>딸기라떼</span>
-                <span style={{flex: '1', textAlign: 'center'}}>1</span>
-                <span style={{flex: '1', textAlign: 'center'}}>0</span>
-                <span style={{flex: '1', textAlign: 'right'}}>4,000</span>
-            </ReceiptSection>
-            <ReceiptSection style={{display: 'flex'}}>
-                <span style={{flex: '2'}}>아이스아메리카노</span>
-                <span style={{flex: '1', textAlign: 'center'}}>1</span>
-                <span style={{flex: '1', textAlign: 'center'}}>0</span>
-                <span style={{flex: '1', textAlign: 'right'}}>2,000</span>
-            </ReceiptSection>
-            <Hr/>
+        <ReceiptSection style={{display: 'flex'}}>
+            <Span style={{flex: '2'}}>합계</Span>
+            <Span style={{flex: '1', textAlign: 'center'}}></Span>
+            <Span style={{flex: '1', textAlign: 'center'}}>0</Span>
+            <Span style={{flex: '1', textAlign: 'right'}}>{total.toLocaleString()}</Span>
+        </ReceiptSection>
+        <Hr/>
 
-            <ReceiptSection style={{display: 'flex'}}>
-                <span style={{flex: '2'}}>합계</span>
-                <span style={{flex: '1', textAlign: 'center'}}></span>
-                <span style={{flex: '1', textAlign: 'center'}}>0</span>
-                <span style={{flex: '1', textAlign: 'right'}}>2,000</span>
-            </ReceiptSection>
-            <Hr/>
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Span style={{fontWeight: 'bold', fontSize: '18px'}}>결제금액</Span>
+            <Span>{total.toLocaleString()}</Span>
+        </ReceiptSection>
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Span>[부가세 포함]</Span>
+            <Span>(631)</Span>
+        </ReceiptSection>
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Span>[보증금 포함]</Span>
+            <Span>(0)</Span>
+        </ReceiptSection>
+        <Hr/>
 
-            <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
-                <span style={{fontWeight: 'bold'}}>결제금액</span>
-                <span>10,500</span>
-            </ReceiptSection>
-            <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
-                <span>[부가세 포함]</span>
-                <span>(631)</span>
-            </ReceiptSection>
-            <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
-                <span>[보증금 포함]</span>
-                <span>(0)</span>
-            </ReceiptSection>
-            <Hr/>
-            <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
-                <span>[신용카드]</span>
-                <span>10,500</span>
-            </ReceiptSection>
-            <Hr/>
-            <Hr/>
+        <ReceiptSection style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Span>[{transactionType}]</Span>
+            <Span>{total.toLocaleString()}</Span>
+        </ReceiptSection>
+        <Hr/>
+        <Hr/>
 
 
-            <ReceiptSection>
-                <span>● 신용카드 매출전표(고객용)</span>
-            </ReceiptSection>
-            <ReceiptSection>
-                <span>[카드사] 국민카드</span><br/>
-                <span>[카드번호] 1234-5678-****-****</span><br/>
-                <span>[승인금액] 10,500</span><br/>
-                <span>[승인번호] 75513401</span><br/>
-                <span>[할부] 일시불</span><br/>
-                <span>[승인일자] 20240524</span>
-            </ReceiptSection>
-            <Hr/>
-            <Hr/>
-            <ReceiptSection style={{textAlign: 'center'}}>
-                <StyledPopUpImg src={Barcode}/>
-            </ReceiptSection>
-        </ReceiptContent>
-    );
+        <ReceiptSection>
+                <Span style={{fontSize: '18px'}}>▪️ {transactionType} 매출전표(고객용)</Span>
+        </ReceiptSection>
+
+        {/* 거래 유형이 신용카드일 때 */}
+        {transactionType === "신용카드" && (
+                <ReceiptSection>
+                    <Span>[카드사] 국민카드</Span><br />
+                    <Span>[카드번호] 1234-5678-****-****</Span><br />
+                    <Span>[승인금액] {total.toLocaleString()} 원</Span><br />
+                    <Span>[승인번호] 75513401</Span><br />
+                    <Span>[할부] 일시불</Span><br />
+                    <Span>[승인일자] {new Date(date).toLocaleString()}</Span>
+                </ReceiptSection>
+        )}
+
+        {/* 거래 유형이 현금일 때 */}
+        {transactionType === "현금" && (
+                <ReceiptSection>
+                    <Span>[승인금액] {total.toLocaleString()} 원</Span><br />
+                    <Span>[승인번호] 75513401</Span><br />
+                    <Span>[할부] 일시불</Span><br />
+                    <Span>[승인일자] {new Date(date).toLocaleString()}</Span>
+                </ReceiptSection>
+        )}
+        <Hr/>
+        <Hr/>
+        <ReceiptSection style={{textAlign: 'center'}}>
+            <StyledPopUpImg src={Barcode}/>
+        </ReceiptSection>
+
+    </ReceiptContent>
+  );
 }
 
 export default Receipt;

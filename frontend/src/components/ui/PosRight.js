@@ -80,10 +80,12 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
                 <StyledRightButton className="button merged_col" onClick={openCreditCardPopup}>
                     신용카드
                 </StyledRightButton>
+
                 {/* 신용카드 팝업창 */}
                 {isCreditCardPopupVisible && 
                     <CreditCard onClose={closeCreditCardPopup} handleCreditCardButtonClick={handleCreditCardButtonClick} />
                 }
+                
                 <StyledRightButton class="button merged_col">
                     <StyledA href="/inventory">재고</StyledA>
                 </StyledRightButton>
