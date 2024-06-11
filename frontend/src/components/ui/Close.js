@@ -15,7 +15,7 @@ function Close() {
         <DoubleLine/>
         <DLreceiptSection>
             <span class="label">영업 일자 :</span>
-            <span class="value">2024년 06월 11일</span>
+            <span class="value">2024년 06월 17일</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">매 장 명 :</span>
@@ -31,15 +31,15 @@ function Close() {
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">개점 일시 :</span>
-            <span class="value">2024/06/11 10:00:30</span>
+            <span class="value">2024/06/17 10:00:30</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">마감 일시 :</span>
-            <span class="value">2024/06/11 20:00:30</span>
+            <span class="value">2024/06/17 20:00:30</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">출력 일시 :</span>
-            <span class="value">2024/06/11 20:00:30</span>
+            <span class="value">2024/06/17 20:00:30</span>
         </DLreceiptSection>
         <DoubleLine/>
 
