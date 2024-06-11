@@ -86,7 +86,11 @@ function InvenRight({ addItemToInventory }) {
                 </StyledButtonMerged>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
+                <StyledRightButton class="rightbutton">
+                    <StyledA href="/close">
+                        마감
+                    </StyledA>
+                </StyledRightButton>
 
                 <Button/>
 

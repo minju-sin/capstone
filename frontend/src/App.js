@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './components/page/MainPage';
 import InventoryPage from './components/page/InventoryPage';
 import ServicePage from './components/page/ServicePage';
+import ClosePage from './components/page/ClosePage';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
 
                 {/* 주문내역 화면 */}
                 <Route path="/service" element={<ServicePage />} />
+
+                {/* 마감 화면 */}
+                <Route path="/close" element={<ClosePage />} />
           
             </Routes>
         </BrowserRouter>

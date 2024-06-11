@@ -73,7 +73,9 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 <StyledRightButton class="rightbutton"> </StyledRightButton>
                 
-                <StyledRightButton class="button merged_col">주문</StyledRightButton>
+                <StyledRightButton class="button merged_col">
+                    <StyledA href="/close">마감</StyledA>
+                </StyledRightButton>
                 <StyledRightButton className="button merged_col" onClick={handleCashButtonClick}>
                     현금
                 </StyledRightButton>
