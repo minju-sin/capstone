@@ -60,7 +60,7 @@ const orderSave = asyncHandler(async (req, res) => {
 
         // 우유 재고 감소 - 커피 종류 모두
         const milkItems = ['녹차라떼', '바닐라라떼', '딸기라떼', '카페라떼', '카페모카', '카푸치노', '돌체라떼'];
-        const milkOrders = items.filter(item => coffeeItems.includes(item.idmenu));
+        const milkOrders = items.filter(item => milkItems.includes(item.idmenu));
         if (milkOrders.length > 0) {
             const totalMilkQuantity = milkOrders.reduce((total, item) => total + item.quantity, 0);
             await connection.query(
@@ -109,8 +109,9 @@ const orderSave = asyncHandler(async (req, res) => {
             }
         }
 
-        // 연유 재고 감소 - 돌체라떼
-        const condensedOrders = items.filter(item => item.idmenu === '돌체라떼');
+        // 연유 재고 감소 - 돌체라떼, 녹차라떼
+        const condensedItems = ['돌체라떼', '녹차라떼'];
+        const condensedOrders = items.filter(item => condensedItems.includes(item.idmenu));
         if (condensedOrders.length > 0) {
             const totalCondensedQuantity = condensedOrders.reduce((total, item) => total + item.quantity, 0);
 
@@ -171,7 +172,7 @@ const orderSave = asyncHandler(async (req, res) => {
                 [totalIceQuantity]
             );
 
-            // 초코시럽 재고 확인
+            // 아이스크림 재고 확인
             const [iceStockResults] = await connection.query(
                 'SELECT quantity FROM inventory WHERE idinventory = "아이스크림"'
             );
@@ -197,7 +198,7 @@ const orderSave = asyncHandler(async (req, res) => {
                 [totalColdQuantity]
             );
 
-            // 초코시럽 재고 확인
+            // 콜드브루 재고 확인
             const [coldStockResults] = await connection.query(
                 'SELECT quantity FROM inventory WHERE idinventory = "콜드브루"'
             );
@@ -213,6 +214,110 @@ const orderSave = asyncHandler(async (req, res) => {
             }
         }
 
+        // 녹차 재고 감소 - 녹차라떼
+        const nokOrders = items.filter(item => item.idmenu === '녹차라떼');
+        if (nokOrders.length > 0) {
+            const totalNokQuantity = nokOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "녹차"',
+                [totalNokQuantity]
+            );
+
+            // 녹차 재고 확인
+            const [nokStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "녹차"'
+            );
+
+            const nokStockQuantity = nokStockResults[0].quantity;
+
+            if (nokStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 녹차 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+        // 딸기 재고 감소 - 딸기라떼
+        const strawOrders = items.filter(item => item.idmenu === '딸기라떼');
+        if (strawOrders.length > 0) {
+            const totalStrawQuantity = strawOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "딸기"',
+                [totalStrawQuantity]
+            );
+
+            // 딸기 재고 확인
+            const [strawStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "딸기"'
+            );
+
+            const strawStockQuantity = strawStockResults[0].quantity;
+
+            if (strawStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 딸기 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+        // 유자 재고 감소 - 유자차
+        const ujaOrders = items.filter(item => item.idmenu === '유자차');
+        if (ujaOrders.length > 0) {
+            const totalUjaQuantity = ujaOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "유자"',
+                [totalUjaQuantity]
+            );
+
+            // 유자 재고 확인
+            const [ujaStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "유자"'
+            );
+
+            const ujaStockQuantity = ujaStockResults[0].quantity;
+
+            if (ujaStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 유자 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+
+        // 설탕시럽 재고 감소 - 유자차
+        const sugarOrders = items.filter(item => item.idmenu === '딸기라떼');
+        if (sugarOrders.length > 0) {
+            const totalSugarQuantity = sugarOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "설탕시럽"',
+                [totalSugarQuantity]
+            );
+
+            // 설탕시럽 재고 확인
+            const [sugarStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "설탕시럽"'
+            );
+
+            const sugarStockQuantity = sugarStockResults[0].quantity;
+
+            if (sugarStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 설탕시럽 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
 
 
         // 트랜잭션 커밋
