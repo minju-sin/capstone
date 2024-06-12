@@ -109,6 +109,112 @@ const orderSave = asyncHandler(async (req, res) => {
             }
         }
 
+        // 연유 재고 감소 - 돌체라떼
+        const condensedOrders = items.filter(item => item.idmenu === '돌체라떼');
+        if (condensedOrders.length > 0) {
+            const totalCondensedQuantity = condensedOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "연유"',
+                [totalCondensedQuantity]
+            );
+
+            // 바닐라 재고 확인
+            const [condensedStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "연유"'
+            );
+
+            const condensedStockQuantity = condensedStockResults[0].quantity;
+
+            if (condensedStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 연유 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+        // 초코시럽 재고 감소 - 카페모카
+        const chocoOrders = items.filter(item => item.idmenu === '카페모카');
+        if (chocoOrders.length > 0) {
+            const totalchocoQuantity = chocoOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "초코시럽"',
+                [totalchocoQuantity]
+            );
+
+            // 초코시럽 재고 확인
+            const [chocoStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "초코시럽"'
+            );
+
+            const chocoStockQuantity = chocoStockResults[0].quantity;
+
+            if (chocoStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 초코시럽 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+        // 아이스크림 재고 감소 - 아포카토
+        const iceOrders = items.filter(item => item.idmenu === '아포카토');
+        if (iceOrders.length > 0) {
+            const totalIceQuantity = iceOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "아이스크림"',
+                [totalIceQuantity]
+            );
+
+            // 초코시럽 재고 확인
+            const [iceStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "아이스크림"'
+            );
+
+            const iceStockQuantity = iceStockResults[0].quantity;
+
+            if (iceStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 아이스크림 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+        // 콜드브루 재고 감소 - 아포카토
+        const coldOrders = items.filter(item => item.idmenu === '콜드브루');
+        if (coldOrders.length > 0) {
+            const totalColdQuantity = coldOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "콜드브루"',
+                [totalColdQuantity]
+            );
+
+            // 초코시럽 재고 확인
+            const [coldStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "콜드브루"'
+            );
+
+            const coldStockQuantity = coldStockResults[0].quantity;
+
+            if (coldStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 콜드브루 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+
+
         // 트랜잭션 커밋
         await connection.commit();
 
