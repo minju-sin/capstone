@@ -34,6 +34,30 @@ const orderSave = asyncHandler(async (req, res) => {
         // 모든 쿼리가 완료될 때까지 기다림
         await Promise.all(serviceQueries);
 
+        // 원두 재고 감소
+        const coffeeOrders = items.filter(item => item.idmenu === '아메리카노');
+        if (coffeeOrders.length > 0) {
+            const totalCoffeeQuantity = coffeeOrders.reduce((total, item) => total + item.quantity, 0);
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "원두"',
+                [totalCoffeeQuantity]
+            );
+
+            // 원두 재고 확인
+            const [stockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "원두"'
+            );
+
+            const stockQuantity = stockResults[0].quantity;
+            if (stockQuantity < 2) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 원두 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
         // 트랜잭션 커밋
         await connection.commit();
 
