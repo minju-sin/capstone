@@ -30,12 +30,11 @@ const orderSave = asyncHandler(async (req, res) => {
                 [orderId, item.idmenu, 1]
             );
         });
-
         // 모든 쿼리가 완료될 때까지 기다림
         await Promise.all(serviceQueries);
 
         // 원두 재고 감소 - 커피 종류 모두
-        const coffeeItems = ['아메리카노', '바닐라라떼', '아포카토', '카페라떼', '카페모카', '카푸치노'];
+        const coffeeItems = ['아메리카노', '바닐라라떼', '아포가토', '카페라떼', '카페모카', '카푸치노', '돌체라떼'];
         const coffeeOrders = items.filter(item => coffeeItems.includes(item.idmenu));
         if (coffeeOrders.length > 0) {
             const totalCoffeeQuantity = coffeeOrders.reduce((total, item) => total + item.quantity, 0);
@@ -53,6 +52,57 @@ const orderSave = asyncHandler(async (req, res) => {
             if (stockQuantity <= 5) {
                 // 재고 부족 알림
                 res.status(201).json({ success: true, message: '주문표 저장 성공! 원두 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+        // 우유 재고 감소 - 커피 종류 모두
+        const milkItems = ['녹차라떼', '바닐라라떼', '딸기라떼', '카페라떼', '카페모카', '카푸치노', '돌체라떼'];
+        const milkOrders = items.filter(item => coffeeItems.includes(item.idmenu));
+        if (milkOrders.length > 0) {
+            const totalMilkQuantity = milkOrders.reduce((total, item) => total + item.quantity, 0);
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "우유"',
+                [totalMilkQuantity]
+            );
+
+            // 우유 재고 확인
+            const [milkstockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "우유"'
+            );
+
+            const milkstockQuantity = milkstockResults[0].quantity;
+            if (milkstockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 우유 재고 부족!' });
+                // 트랜잭션 커밋
+                await connection.commit();
+                return;
+            }
+        }
+
+        // 바닐라 재고 감소 - 바닐라 라떼
+        const vanillaOrders = items.filter(item => item.idmenu === '바닐라라떼');
+        if (vanillaOrders.length > 0) {
+            const totalVanillaQuantity = vanillaOrders.reduce((total, item) => total + item.quantity, 0);
+
+            await connection.query(
+                'UPDATE inventory SET quantity = quantity - ? WHERE idinventory = "바닐라"',
+                [totalVanillaQuantity]
+            );
+
+            // 바닐라 재고 확인
+            const [vanillaStockResults] = await connection.query(
+                'SELECT quantity FROM inventory WHERE idinventory = "바닐라"'
+            );
+
+            const vanillaStockQuantity = vanillaStockResults[0].quantity;
+
+            if (vanillaStockQuantity <= 5) {
+                // 재고 부족 알림
+                res.status(201).json({ success: true, message: '주문표 저장 성공! 바닐라 재고 부족!' });
                 // 트랜잭션 커밋
                 await connection.commit();
                 return;

@@ -97,7 +97,7 @@ function MainPage() {
               handleCreditCardButtonClick={handleCreditCardButtonClick}
             />
         </StyledContainer>
-        {stockAlert && <StockAlertPopup>원두 재고 부족!</StockAlertPopup>}
+        {stockAlert && <StockAlertPopup>재고 부족!</StockAlertPopup>}
       </StyledBody>
     );
 }
