@@ -5,10 +5,24 @@ import { StyledBody } from "../styles/HeaderCSS";
 import { StyledContainer } from "../styles/PosLeftCSS";
 import PosLeft from "../ui/PosLeft";
 import PosRight from "../ui/PosRight";
+import styled from "styled-components";
+
+// 팝업 스타일
+const StockAlertPopup = styled.div`
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+`;
 
 function MainPage() {
     const [orders, setOrders] = useState([]); // 메뉴 클릭 시 주문표에 추가되는 기능 
     const [receivedAmount, setReceivedAmount] = useState(0);  // 받은 금액 상태
+    const [stockAlert, setStockAlert] = useState(false);  // 재고 부족 알림 상태
+
 
     // 주문표 추가하는 함수
     const addOrder = (item) => {
@@ -33,8 +47,14 @@ function MainPage() {
         try {
             const response = await axios.post('http://localhost:8080/order/save', orderData);
             if (response.data.success) {
-                console.log('주문표 저장 성공');
+                console.log(response.data.message);
                 clearOrders(); // 주문 저장 후 주문표 비우기
+
+                if (response.data.message.includes('재고 부족')) {
+                    setStockAlert(true);
+                } else {
+                    setStockAlert(false);
+                }
             } else {
                 console.error('주문표 저장 실패:', response.data.message);
             }
@@ -77,6 +97,7 @@ function MainPage() {
               handleCreditCardButtonClick={handleCreditCardButtonClick}
             />
         </StyledContainer>
+        {stockAlert && <StockAlertPopup>원두 재고 부족!</StockAlertPopup>}
       </StyledBody>
     );
 }
