@@ -15,7 +15,7 @@ function Close() {
         <DoubleLine/>
         <DLreceiptSection>
             <span class="label">영업 일자 :</span>
-            <span class="value">2024년 06월 17일</span>
+            <span class="value">2024년 06월 14일</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">매 장 명 :</span>
@@ -31,15 +31,15 @@ function Close() {
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">개점 일시 :</span>
-            <span class="value">2024/06/17 10:00:30</span>
+            <span class="value">2024/06/14 10:00:30</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">마감 일시 :</span>
-            <span class="value">2024/06/17 20:00:30</span>
+            <span class="value">2024/06/14 20:00:30</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">출력 일시 :</span>
-            <span class="value">2024/06/17 20:00:30</span>
+            <span class="value">2024/06/14 20:00:30</span>
         </DLreceiptSection>
         <DoubleLine/>
 
@@ -219,51 +219,51 @@ function Close() {
         </DLreceiptTitle>
         <DoubleLine/>
         <DLreceiptSection>
-            <span class="label">영업 준비금 :</span>
+            <span class="label">영업 준비금 : </span>
             <span class="value">107,200</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">수시 입금액 :</span>
+            <span class="label">수시 입금액 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">수시 출금액 :</span>
+            <span class="label">수시 출금액 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">현금 환불액 :</span>
+            <span class="label">현금 환불액 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">기타 환불액 :</span>
+            <span class="label">기타 환불액 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">상품권 현금 :</span>
+            <span class="label">상품권 현금 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">상품권 카드 :</span>
+            <span class="label">상품권 카드 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">선 불 현 금 :</span>
+            <span class="label">선 불 현 금 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">선 불 카 드 :</span>
+            <span class="label">선 불 카 드 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">선불 환불액 :</span>
+            <span class="label">선불 환불액 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">외상 입금액 :</span>
+            <span class="label">외상 입금액 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">전자화폐충전 :</span>
+            <span class="label">전자화폐충전 : </span>
             <span class="value">0</span>
         </DLreceiptSection>
         <DoubleLine/>
@@ -338,6 +338,21 @@ function Close() {
             <SpanCenter>0 매</SpanCenter>
             <SpanRight>0</SpanRight>
         </DLreceiptSectionFlex>
+        <DoubleLine/>
+
+        <DoubleLine/>
+        <DLreceiptTitle>
+            <span>재 고 평 가 서</span>
+        </DLreceiptTitle>
+        <DoubleLine/>
+        <DLreceiptSection>
+            <span class="label">재고 자산 :</span>
+            <span class="value"> 135,500</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">원두 :</span>
+            <span class="value"> 90</span>
+        </DLreceiptSection>
         <DoubleLine/>
 
         <DoubleLine/>
