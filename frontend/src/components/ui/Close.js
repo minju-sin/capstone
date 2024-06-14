@@ -346,12 +346,56 @@ function Close() {
         </DLreceiptTitle>
         <DoubleLine/>
         <DLreceiptSection>
-            <span class="label">재고 자산 :</span>
-            <span class="value"> 135,500</span>
+            <span class="label">재고 자산 : </span>
+            <span class="value">135,500 </span>
         </DLreceiptSection>
         <DLreceiptSection>
-            <span class="label">원두 :</span>
-            <span class="value"> 90</span>
+            <span class="label">원두 : </span>
+            <span class="value">88</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">녹차 : </span>
+            <span class="value">9</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">딸기 : </span>
+            <span class="value">9</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">바닐라 : </span>
+            <span class="value">20</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">설탕시럽 : </span>
+            <span class="value">9</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">아이스크림 : </span>
+            <span class="value">5</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">연유 : </span>
+            <span class="value">3</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">우유 : </span>
+            <span class="value">28</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">유자 : </span>
+            <span class="value">5</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">초코시럽 : </span>
+            <span class="value">9</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">콜드브루 : </span>
+            <span class="value">9</span>
+        </DLreceiptSection>
+        <DLreceiptSection>
+            <span class="label">헤이즐넛 : </span>
+            <span class="value">10</span>
         </DLreceiptSection>
         <DoubleLine/>
 
