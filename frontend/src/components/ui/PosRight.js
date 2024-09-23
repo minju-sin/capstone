@@ -42,11 +42,11 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
     return (
         <StyledRightHalf class="right-half">
             <StyledButtonContainer class="button-container">
-                <StyledRightButton class="rightbutton">종류</StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
+                <StyledRightButton class="rightbutton">커피(아이스)</StyledRightButton>
+                <StyledRightButton class="rightbutton">커피(핫)</StyledRightButton>
+                <StyledRightButton class="rightbutton">베버리지</StyledRightButton>
+                <StyledRightButton class="rightbutton">블렌디드</StyledRightButton>
+                <StyledRightButton class="rightbutton">베이커리</StyledRightButton>
                 
                 <Button/>
 
