@@ -23,7 +23,7 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
     const fetchMenuItems = async (category) => {
         try {
             const response = await axios.get('http://localhost:8080/pos/menu', {
-                params: { category } // 카테고리 파라미터를 전달
+                params: { category } // 선택한 카테고리를 쿼리 파라미터로 보냄
             }); // axios를 사용하여 GET 요청을 보냅니다.
             setMenuItems(response.data); // 응답 데이터를 상태에 설정합니다.
         } catch (error) {
