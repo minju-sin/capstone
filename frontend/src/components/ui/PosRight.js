@@ -13,15 +13,18 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
     const [isCreditCardPopupVisible, setIsCreditCardPopupVisible] = useState(false); // 신용카드 
 
 
+    
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect 훅을 사용하여 데이터를 가져옴
     useEffect(() => {
         fetchMenuItems(); // fetchMenuItems 함수 호출
     }, []);
 
     // 서버에서 메뉴 아이템 데이터를 가져오는 비동기 함수
-    const fetchMenuItems = async () => {
+    const fetchMenuItems = async (category) => {
         try {
-            const response = await axios.get('http://localhost:8080/pos/menu'); // axios를 사용하여 GET 요청을 보냅니다.
+            const response = await axios.get('http://localhost:8080/pos/menu', {
+                params: { category } // 카테고리 파라미터를 전달
+            }); // axios를 사용하여 GET 요청을 보냅니다.
             setMenuItems(response.data); // 응답 데이터를 상태에 설정합니다.
         } catch (error) {
             console.error('메뉴를 가지고 올 수 없는 오류 발생:', error);
@@ -42,11 +45,11 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
     return (
         <StyledRightHalf class="right-half">
             <StyledButtonContainer class="button-container">
-                <StyledRightButton class="rightbutton">커피(아이스)</StyledRightButton>
-                <StyledRightButton class="rightbutton">커피(핫)</StyledRightButton>
-                <StyledRightButton class="rightbutton">베버리지</StyledRightButton>
-                <StyledRightButton class="rightbutton">블렌디드</StyledRightButton>
-                <StyledRightButton class="rightbutton">베이커리</StyledRightButton>
+                <StyledRightButton className="rightbutton" onClick={() => fetchMenuItems('커피(아이스)')}>커피(아이스)</StyledRightButton>
+                <StyledRightButton className="rightbutton" onClick={() => fetchMenuItems('커피(핫)')}>커피(핫)</StyledRightButton>
+                <StyledRightButton className="rightbutton" onClick={() => fetchMenuItems('베버리지')}>베버리지</StyledRightButton>
+                <StyledRightButton className="rightbutton" onClick={() => fetchMenuItems('블렌디드')}>블렌디드</StyledRightButton>
+                <StyledRightButton className="rightbutton" onClick={() => fetchMenuItems('베이커리')}>베이커리</StyledRightButton>
                 
                 <Button/>
 
