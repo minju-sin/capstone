@@ -8,7 +8,7 @@ function Header() {
     return (
         
         <StyledHeader class="header">
-          <StyledH1>말하는 감쟈 POS 재고 관리</StyledH1>
+          <StyledH1>아신 POS 재고 관리</StyledH1>
         </StyledHeader>
         
     );
