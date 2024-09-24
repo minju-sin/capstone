@@ -1,8 +1,6 @@
-// PosRight.js
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledButtonMerged, StyledA } from "../styles/PosRightCSS";
+import { StyledRightHalf, StyledButtonContainer, StyledRightButton, StyledA } from "../styles/PosRightCSS";
 import Button from "./Button";
 import CreditCard from "./CreditCard";
 
@@ -11,7 +9,6 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
     
     const [menuItems, setMenuItems] = useState([]); // 메뉴판 상태
     const [isCreditCardPopupVisible, setIsCreditCardPopupVisible] = useState(false); // 신용카드 
-
 
     
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect 훅을 사용하여 데이터를 가져옴
@@ -24,7 +21,7 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
         try {
             const response = await axios.get('http://localhost:8080/pos/menu', {
                 params: { category } // 선택한 카테고리를 쿼리 파라미터로 보냄
-            }); // axios를 사용하여 GET 요청을 보냅니다.
+            }); 
             setMenuItems(response.data); // 응답 데이터를 상태에 설정합니다.
         } catch (error) {
             console.error('메뉴를 가지고 올 수 없는 오류 발생:', error);
@@ -41,6 +38,15 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
         setIsCreditCardPopupVisible(false);
     };
 
+    // 25개 버튼이 되도록 빈 버튼을 채워 넣는 함수
+    const fillEmptyButtons = () => {
+        const filledMenuItems = [...menuItems];
+        const totalButtons = 25; // 5줄 * 5개 = 25개
+        while (filledMenuItems.length < totalButtons) {
+            filledMenuItems.push({ idmenu: '', pricemenu: '' }); // 빈 버튼을 추가
+        }
+        return filledMenuItems;
+    };
 
     return (
         <StyledRightHalf class="right-half">
@@ -54,29 +60,22 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
                 <Button/>
 
                 {/* 가게 메뉴목록 */}
-                {menuItems.map((item, index) => (
+                {fillEmptyButtons().map((item, index) => (
                     <StyledRightButton
                         key={index}
                         className="rightbutton"
                         onClick={() => addOrder({ name: item.idmenu, price: item.pricemenu })}
+                        disabled={!item.idmenu} // 빈 버튼은 클릭되지 않도록 비활성화
                     >
-                        {item.idmenu}<br/>{item.pricemenu.toLocaleString()}원
+                        {item.idmenu ? (
+                            <>
+                                {item.idmenu}<br/>{item.pricemenu.toLocaleString()}원
+                            </>
+                        ) : ' '}
                     </StyledRightButton>
                 ))}
                 
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-
-                <Button/>
-
-                <StyledButtonMerged class="button merged">기타</StyledButtonMerged>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                <StyledRightButton class="rightbutton"> </StyledRightButton>
-                
-                <StyledRightButton class="button merged_col">
+                <StyledRightButton className="button merged_col">
                     <StyledA href="/close">마감</StyledA>
                 </StyledRightButton>
                 <StyledRightButton className="button merged_col" onClick={handleCashButtonClick}>
@@ -91,15 +90,13 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
                     <CreditCard onClose={closeCreditCardPopup} handleCreditCardButtonClick={handleCreditCardButtonClick} />
                 }
                 
-                <StyledRightButton class="button merged_col">
+                <StyledRightButton className="button merged_col">
                     <StyledA href="/inventory">재고</StyledA>
                 </StyledRightButton>
-                <StyledRightButton class="button merged_col">
+                <StyledRightButton className="button merged_col">
                     <StyledA href="/service">서비스</StyledA>
                 </StyledRightButton>
             </StyledButtonContainer>
-
-            
         </StyledRightHalf>
     );
 };
