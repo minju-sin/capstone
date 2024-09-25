@@ -1,11 +1,12 @@
 // ./PosLeft.js
 
-import React from "react";
+import React, { useState } from "react";
 import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, StyledLeftMiddle, StyledLeftThird, StyledButton, StyledLeftFourth, StyledLeftFourthLeft, StyledLeftFourthMiddle, StyledLeftFourthRight, StyledLeftFourthLeftButton, StyledLeftFourthLeft2, StyledCenter, StyledNum, StyledInfoRow, StyledLabel, StyledValue } from "../styles/PosLeftCSS";
 
 
 
 function PosLeft({ orders, clearOrders, receivedAmount  }) {
+    const [selectedOrderIndex, setSelectedOrderIndex] = useState(null); // 선택된 주문 인덱스
 
     // 주문 목록의 가격 총합을 계산하는 함수
     const calculateTotalPrice = () => {
@@ -16,6 +17,14 @@ function PosLeft({ orders, clearOrders, receivedAmount  }) {
         return totalPrice;
     };
 
+    // 주문 선택 처리 함수
+    const handleOrderClick = (index) => {
+        if (selectedOrderIndex === index) {
+            setSelectedOrderIndex(null); // 이미 선택된 주문을 클릭하면 선택 해제
+        } else {
+            setSelectedOrderIndex(index); // 새로운 주문 선택
+        }
+    };
     
     return (
         <StyledLeftHalf class="left-half">
@@ -31,7 +40,15 @@ function PosLeft({ orders, clearOrders, receivedAmount  }) {
                         <StyledTh>비고</StyledTh>
                     </StyledTr>
                     {orders.map((order, index) => (
-                            <StyledTr key={index}>
+                            <StyledTr
+                                key={index}
+                                onClick={() => handleOrderClick(index)} // 클릭 시 주문 선택
+                                style={{
+                                    backgroundColor:
+                                        selectedOrderIndex === index ? "#f0f0f0" : "transparent", // 선택된 주문 하이라이트
+                                    cursor: "pointer"
+                                }}
+                            >
                                 <StyledTh>{index + 1}</StyledTh>
                                 <StyledTh>{order.name}</StyledTh>
                                 <StyledTh>{order.price.toLocaleString()}</StyledTh>
@@ -50,7 +67,9 @@ function PosLeft({ orders, clearOrders, receivedAmount  }) {
                 <StyledButton className="button" onClick={clearOrders}>
                     전체<br/>취소
                 </StyledButton>
-                <StyledButton class="button">선택<br/>취소</StyledButton>
+                <StyledButton className="button" onClick={() => console.log("선택 취소")}>
+                선택<br />취소
+                </StyledButton>
                 <StyledButton class="button">할인<br/>처리</StyledButton>
                 <StyledButton class="button">수량<br/>변경</StyledButton>
                 <StyledButton class="button">-</StyledButton>
