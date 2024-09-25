@@ -5,7 +5,7 @@ import { StyledLeftHalf, StyledLeftInner, StyledTable, StyledTr, StyledTh, Style
 
 
 
-function PosLeft({ orders, clearOrders, receivedAmount  }) {
+function PosLeft({ orders, clearOrders, removeSelectedOrder, receivedAmount  }) {
     const [selectedOrderIndex, setSelectedOrderIndex] = useState(null); // 선택된 주문 인덱스
 
     // 주문 목록의 가격 총합을 계산하는 함수
@@ -67,7 +67,7 @@ function PosLeft({ orders, clearOrders, receivedAmount  }) {
                 <StyledButton className="button" onClick={clearOrders}>
                     전체<br/>취소
                 </StyledButton>
-                <StyledButton className="button" onClick={() => console.log("선택 취소")}>
+                <StyledButton className="button" onClick={() => removeSelectedOrder(selectedOrderIndex)}>
                 선택<br />취소
                 </StyledButton>
                 <StyledButton class="button">할인<br/>처리</StyledButton>

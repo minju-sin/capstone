@@ -23,21 +23,28 @@ function MainPage() {
         setOrders([]);
     };
 
+    // 선택된 주문 항목을 삭제하는 함수
+    const removeSelectedOrder = (selectedOrderIndex) => {
+        if (selectedOrderIndex !== null) {
+            const updatedOrders = orders.filter((_, index) => index !== selectedOrderIndex);
+            setOrders(updatedOrders);
+        }
+    };
+
     // 주문 데이터를 백엔드로 전송하는 함수
-    const saveOrder = async (transactionType) => { // 거래 형태를 매개변수로 추가
+    const saveOrder = async (transactionType) => { // 거래 형태 매개변수로 추가 
         const totalAmount = calculateTotalPrice();
         const orderData = {
             date: new Date().toISOString().slice(0, 19).replace('T', ' '), // 현재 날짜 및 시간
             totalPrice: totalAmount,
-            transactionType, // 거래 형태 추가
-            items: orders.map(order => ({ idmenu: order.name, quantity: 1 })) // 각 아이템의 수량은 1로 가정
+            transactionType, // 거래 형태 
+            items: orders.map(order => ({ idmenu: order.name, quantity: 1 })) // 각 아이템 수량 1로 가정
         };
 
         try {
             const response = await axios.post('http://localhost:8080/order/save', orderData);
             if (response.data.success) {
-                console.log(response.data.message);
-                clearOrders(); // 주문 저장 후 주문표 비우기
+                clearOrders(); // 주문 저장 후 주문표 비우기 
 
                 if (response.data.message.includes('재고 부족')) {
                     setStockAlert(true);
@@ -52,21 +59,21 @@ function MainPage() {
         }
     };
 
-    // 현금 버튼 클릭 시 실행되는 함수
+    // 현금 버튼 클릭 시 실행되는 함수 
     const handleCashButtonClick = () => {
         const totalAmount = calculateTotalPrice();
         setReceivedAmount(totalAmount);
-        saveOrder("현금"); // 주문 데이터 저장 시 거래 형태를 "현금"으로 설정
+        saveOrder("현금");
     };
 
-    // 신용카드 버튼 클릭 시 실행되는 함수
+    // 신용카드 버튼 클릭 시 실행되는 함수 
     const handleCreditCardButtonClick = () => {
         const totalAmount = calculateTotalPrice();
         setReceivedAmount(totalAmount);
-        saveOrder("신용카드"); // 주문 데이터 저장 시 거래 형태를 "신용카드"로 설정
+        saveOrder("신용카드");
     };
 
-    // 주문목록 총 금액 함수
+    // 총합 계산 
     const calculateTotalPrice = () => {
         let totalPrice = 0;
         orders.forEach(order => {
@@ -75,16 +82,21 @@ function MainPage() {
         return totalPrice;
     };
 
-    // 팝업 닫기 함수
+    // 팝업 닫기 함수 
     const handleClosePopup = () => {
-        setStockAlert(false); // 재고 부족 알림 상태를 false로 설정하여 팝업을 닫음
+        setStockAlert(false);
     };
 
     return (
       <StyledBody>
         <Header/>
         <StyledContainer className="container">
-            <PosLeft orders={orders} clearOrders={clearOrders} receivedAmount={receivedAmount}/>
+            <PosLeft 
+              orders={orders} 
+              clearOrders={clearOrders} 
+              removeSelectedOrder={removeSelectedOrder} 
+              receivedAmount={receivedAmount}
+            />
             <PosRight 
               addOrder={addOrder} 
               handleCashButtonClick={handleCashButtonClick}
@@ -97,9 +109,7 @@ function MainPage() {
                     <StyledPopUpInner className="popup-inner">
                         <StyledH1>🚨재고 부족🚨</StyledH1>
                         
-                        <StyledP>
-                            부족한 재고를 확인하세요!
-                        </StyledP>
+                        <StyledP>부족한 재고를 확인하세요!</StyledP>
 
                         <StyledCancelButton onClick={handleClosePopup}>닫기</StyledCancelButton>
                         <StyledConfirmButton><StyledA href="/inventory">확인</StyledA></StyledConfirmButton>
