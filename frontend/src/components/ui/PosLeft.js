@@ -16,10 +16,11 @@ function PosLeft({ orders, clearOrders, receivedAmount  }) {
         return totalPrice;
     };
 
+    
     return (
         <StyledLeftHalf class="left-half">
             <StyledLeftInner class="left-inner">
-              <StyledTable>
+                <StyledTable>
                     <StyledTr>
                         <StyledTh>*</StyledTh>
                         <StyledTh>메뉴명</StyledTh>
@@ -40,7 +41,7 @@ function PosLeft({ orders, clearOrders, receivedAmount  }) {
                                 <StyledTh></StyledTh>
                             </StyledTr>
                     ))}
-              </StyledTable>
+                </StyledTable>
             </StyledLeftInner>
 
             <StyledLeftMiddle class="left-middle">&nbsp;</StyledLeftMiddle>
