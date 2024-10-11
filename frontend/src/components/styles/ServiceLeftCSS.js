@@ -77,11 +77,17 @@ export const StyledServiceButton = styled.button`
 export const StyledBottomButtons = styled.div`
     display: flex;
     justify-content: space-between;
+    @media print {
+        display: none; /* 인쇄 시 이 버튼들을 숨김 */
+    }
 `;
 
 export const StyledLeftButtons = styled.div`
     display: flex;
     gap: 10px;
+    @media print {
+        display: none; /* 인쇄 시 이 버튼들을 숨김 */
+    }
 `;
 
 export const StyledLeftButton = styled.button`
@@ -93,6 +99,9 @@ export const StyledLeftButton = styled.button`
     margin-right: 10px;
     font-family: BMJUA;
     font-size: 20px;
+    @media print {
+        display: none; /* 인쇄 시 이 버튼들을 숨김 */
+    }
 `;
 
 /* 영수증 */

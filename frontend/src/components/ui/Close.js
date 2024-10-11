@@ -19,10 +19,11 @@ function Close({ inventoryItems }) {
 
     const [totalSales, setTotalSales] = useState(0); // 총 매출액
 
+    // 총 매출액 API 
     useEffect(() => {
         const fetchTotalSales = async () => {
           try {
-            const response = await fetch('/close/totalPrice'); // API 엔드포인트
+            const response = await fetch('/close/totalPrice'); 
             const data = await response.json();
             setTotalSales(data.totalPrice);
           } catch (error) {
@@ -31,6 +32,11 @@ function Close({ inventoryItems }) {
         };
         fetchTotalSales();
       }, []);
+
+    // 인쇄 함수
+    const handlePrint = () => {
+        window.print(); // 인쇄 대화 상자 열기
+    };
 
     return (
         <DLreceiptContent>
@@ -76,12 +82,18 @@ function Close({ inventoryItems }) {
                         <ReceiptCell></ReceiptCell>
                         <ReceiptCell>{Number(totalSales).toLocaleString()}원</ReceiptCell>
                     </ReceiptRow>
+
                     <ReceiptRow>
-                        <ReceiptCell>할인 금액</ReceiptCell>
+                        <ReceiptCell>현금</ReceiptCell>
                         <ReceiptCell></ReceiptCell>
                         <ReceiptCell>0원</ReceiptCell>
                     </ReceiptRow>
-                    
+
+                    <ReceiptRow>
+                        <ReceiptCell>신용카드</ReceiptCell>
+                        <ReceiptCell></ReceiptCell>
+                        <ReceiptCell>0원</ReceiptCell>
+                    </ReceiptRow>
                 </tbody>
 
                 <ReceiptHeader>
@@ -91,11 +103,6 @@ function Close({ inventoryItems }) {
                 </ReceiptHeader>
 
                 <tbody>
-                    <ReceiptRow>
-                        <ReceiptCell>품명</ReceiptCell>
-                        <ReceiptCell></ReceiptCell>
-                        <ReceiptCell>개수</ReceiptCell>
-                    </ReceiptRow>
                     {inventoryItems.map(item => (
                     <ReceiptRow key={item.idinventory}>
                         <ReceiptCell>{item.idinventory}</ReceiptCell>
@@ -109,7 +116,7 @@ function Close({ inventoryItems }) {
             <StyledBottomButtons class="bottom-buttons">
                     <StyledLeftButtons class="left-buttons">
                         <StyledLeftButton><StyledA href="/">이전</StyledA></StyledLeftButton>
-                        <StyledLeftButton>인쇄</StyledLeftButton>
+                        <StyledLeftButton onClick={handlePrint}>인쇄</StyledLeftButton>
                     </StyledLeftButtons>
             </StyledBottomButtons>
             

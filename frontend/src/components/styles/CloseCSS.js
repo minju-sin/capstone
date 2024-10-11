@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const DLreceiptContent = styled.div`
   width: 80%; /* 너비를 줄여서 적용 */
   margin: 0 auto;
-  font-family: Arial, sans-serif;
+  font-family: BMJUA;
+  font-size: 20px;
   background-color: #f5f5f5;
   padding: 20px;
 `;
