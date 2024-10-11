@@ -1,10 +1,27 @@
 // ./ClosePage.js
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyledBody, StyledH1, StyledHeader } from "../styles/HeaderCSS";
 import Close from "../ui/Close";
+import axios from "axios";
 
 function ClosePage() {
+  // 재고 변수 
+  const [inventoryItems, setInventoryItems] = useState([]);
+
+  // 초기 재고 데이터를 불러오는 함수
+  useEffect(() => {
+      const fetchInventory = async () => {
+          try {
+              const response = await axios.get('http://localhost:8080/inventory/show');
+              setInventoryItems(response.data);
+          } catch (error) {
+              console.error('Error fetching inventory:', error);
+          }
+      };
+
+      fetchInventory();
+  }, []);
 
     return (
       <StyledBody>
@@ -12,7 +29,7 @@ function ClosePage() {
           <StyledH1>마감영수증</StyledH1>
         </StyledHeader>
 
-        <Close/>
+        <Close inventoryItems={inventoryItems} />
 
         
       </StyledBody>

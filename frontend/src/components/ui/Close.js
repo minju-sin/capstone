@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import {
+    StyledBottomButtons,
+    StyledLeftButtons,
+    StyledLeftButton
+} from "../styles/ServiceLeftCSS";
+import { StyledA } from "../styles/PosRightCSS";
 import { DLreceiptContent, ReceiptTable, ReceiptRow, ReceiptHeader, ReceiptCell } from "../styles/CloseCSS";
 
-function Close() {
+function Close({ inventoryItems }) {
 
     // 현재 날짜 가져오기
     const today = new Date();
@@ -38,19 +44,23 @@ function Close() {
                 <tbody>
                     <ReceiptRow>
                         <ReceiptCell>영업 일자</ReceiptCell>
-                        <ReceiptCell colSpan="2">{formattedDate}</ReceiptCell>
+                        <ReceiptCell></ReceiptCell>
+                        <ReceiptCell>{formattedDate}</ReceiptCell>
                     </ReceiptRow>
                     <ReceiptRow>
                         <ReceiptCell>매장명</ReceiptCell>
-                        <ReceiptCell colSpan="2">아신홀딩스(동의대점)</ReceiptCell>
+                        <ReceiptCell></ReceiptCell>
+                        <ReceiptCell>아신홀딩스(동의대점)</ReceiptCell>
                     </ReceiptRow>
                     <ReceiptRow>
                         <ReceiptCell>POS 번호</ReceiptCell>
-                        <ReceiptCell colSpan="2">01</ReceiptCell>
+                        <ReceiptCell></ReceiptCell>
+                        <ReceiptCell>01</ReceiptCell>
                     </ReceiptRow>
                     <ReceiptRow>
                         <ReceiptCell>담당자</ReceiptCell>
-                        <ReceiptCell colSpan="2">아신홀딩스</ReceiptCell>
+                        <ReceiptCell></ReceiptCell>
+                        <ReceiptCell>아신홀딩스</ReceiptCell>
                     </ReceiptRow>
                 </tbody>
 
@@ -86,11 +96,22 @@ function Close() {
                         <ReceiptCell></ReceiptCell>
                         <ReceiptCell>개수</ReceiptCell>
                     </ReceiptRow>
-                    
-                    
+                    {inventoryItems.map(item => (
+                    <ReceiptRow key={item.idinventory}>
+                        <ReceiptCell>{item.idinventory}</ReceiptCell>
+                        <ReceiptCell></ReceiptCell>
+                        <ReceiptCell>{item.quantity}개</ReceiptCell>
+                    </ReceiptRow>
+                ))}
                 </tbody>
             </ReceiptTable>
 
+            <StyledBottomButtons class="bottom-buttons">
+                    <StyledLeftButtons class="left-buttons">
+                        <StyledLeftButton><StyledA href="/">이전</StyledA></StyledLeftButton>
+                        <StyledLeftButton>인쇄</StyledLeftButton>
+                    </StyledLeftButtons>
+            </StyledBottomButtons>
             
         </DLreceiptContent>
     );
