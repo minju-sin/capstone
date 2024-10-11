@@ -13,7 +13,7 @@ function PosRight({ addOrder, handleCashButtonClick, handleCreditCardButtonClick
     
     // 컴포넌트가 마운트될 때 한 번만 실행되는 useEffect 훅을 사용하여 데이터를 가져옴
     useEffect(() => {
-        fetchMenuItems(); // fetchMenuItems 함수 호출
+        fetchMenuItems('커피(아이스)'); // fetchMenuItems 함수 호출
     }, []);
 
     // 서버에서 메뉴 아이템 데이터를 가져오는 비동기 함수

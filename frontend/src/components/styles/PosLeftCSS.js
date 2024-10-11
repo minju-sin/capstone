@@ -142,13 +142,13 @@ export const StyledLeftFourthRight = styled.div`
 export const StyledCenter = styled.div`
     width: 90%;
     display: flex;
-    justifyContent: center;
+    justify-content: center;
 `;
 
 export const StyledNum = styled.div`
     width: 100%;
     display: flex;
-    justifyContent: space-around;
+    justify-content: space-around;
     margin-top: 10px;
 `;
 
