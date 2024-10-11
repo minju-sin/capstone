@@ -10,7 +10,7 @@ function Receipt({ receiptData }) {
   return (
     <ReceiptContent style={{maxHeight: '500px', width: '500px'}}>
         <ReceiptSection>
-            <ReceiptTitle>말하는 감쟈</ReceiptTitle>
+            <ReceiptTitle>아신홀딩스</ReceiptTitle>
             <Div>주소: 엄광로 176</Div>
             <Div>사업자 번호: 202-13-****</Div>
             <Div>홈페이지: http://www.talkingpotato.com</Div>

@@ -19,7 +19,7 @@ function Close() {
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">매 장 명 :</span>
-            <span class="value">말하는 감쟈(동의대점)</span>
+            <span class="value"> 아신홀딩스(동의대점)</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">POS 번호 :</span>
@@ -27,7 +27,7 @@ function Close() {
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">담 당 자 :</span>
-            <span class="value">감자들</span>
+            <span class="value">아신홀딩스</span>
         </DLreceiptSection>
         <DLreceiptSection>
             <span class="label">개점 일시 :</span>
