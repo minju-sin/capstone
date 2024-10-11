@@ -18,6 +18,8 @@ function Close({ inventoryItems }) {
     const formattedDate = `${year}년 ${month}월 ${day}일`;
 
     const [totalSales, setTotalSales] = useState(0); // 총 매출액
+    const [totalCashSales, setTotalCashSales] = useState(0); // 현금 
+    const [totalCardSales, setTotalCardSales] = useState(0); // 신용카드
 
     // 총 매출액 API 
     useEffect(() => {
@@ -32,6 +34,34 @@ function Close({ inventoryItems }) {
         };
         fetchTotalSales();
       }, []);
+
+    // 현금 매출액 API 
+    useEffect(() => {
+        const fetchTotalCardSales = async () => {
+          try {
+            const response = await fetch('/close/totalCashPrice'); 
+            const data = await response.json();
+            setTotalCardSales(data.totalPrice);
+          } catch (error) {
+            console.error('총 매출액을 불러오는 중 오류 발생:', error);
+          }
+        };
+        fetchTotalCardSales();
+    }, []);
+
+    // 신용카드 매출액 API 
+    useEffect(() => {
+        const fetchTotalCashSales = async () => {
+          try {
+            const response = await fetch('/close/totalCardPrice'); 
+            const data = await response.json();
+            setTotalCashSales(data.totalPrice);
+          } catch (error) {
+            console.error('총 매출액을 불러오는 중 오류 발생:', error);
+          }
+        };
+        fetchTotalCashSales();
+    }, []);
 
     // 인쇄 함수
     const handlePrint = () => {
@@ -86,13 +116,13 @@ function Close({ inventoryItems }) {
                     <ReceiptRow>
                         <ReceiptCell>현금</ReceiptCell>
                         <ReceiptCell></ReceiptCell>
-                        <ReceiptCell>0원</ReceiptCell>
+                        <ReceiptCell>{Number(totalCashSales).toLocaleString()}원</ReceiptCell>
                     </ReceiptRow>
 
                     <ReceiptRow>
                         <ReceiptCell>신용카드</ReceiptCell>
                         <ReceiptCell></ReceiptCell>
-                        <ReceiptCell>0원</ReceiptCell>
+                        <ReceiptCell>{Number(totalCardSales).toLocaleString()}원</ReceiptCell>
                     </ReceiptRow>
                 </tbody>
 

@@ -27,4 +27,51 @@ const CloseTotalPrice = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { CloseTotalPrice };
+// 현금매출 보여주기 API
+// GET /totalCashPrice
+const CloseTotalCashPrice = asyncHandler(async (req, res) => {
+    let connection;
+    try {
+        // 데이터베이스에 연결
+        connection = await dbConnect();
+        
+        const [results] = await connection.query('SELECT SUM(totalPrice) as totalPrice FROM orders WHERE transactionType="현금"');
+        
+        // 쿼리 결과를 JSON 형식으로 응답
+        // results[0].totalPrice가 총 매출액입니다.
+        res.json({ totalPrice: results[0].totalPrice || 0 });
+    } catch (err) {
+        console.error('오류 발생', err);
+        res.status(500).send('서버 에러');
+    } finally {
+        // 데이터베이스 연결을 종료
+        if (connection) {
+            await connection.end();
+        }
+    }
+});
+
+// 신용카드 매출 보여주기 API
+// GET /totalCardPrice
+const CloseTotalCardPrice = asyncHandler(async (req, res) => {
+    let connection;
+    try {
+        // 데이터베이스에 연결
+        connection = await dbConnect();
+        
+        const [results] = await connection.query('SELECT SUM(totalPrice) as totalPrice FROM orders WHERE transactionType="신용카드"');
+        
+        // 쿼리 결과를 JSON 형식으로 응답
+        // results[0].totalPrice가 총 매출액입니다.
+        res.json({ totalPrice: results[0].totalPrice || 0 });
+    } catch (err) {
+        console.error('오류 발생', err);
+        res.status(500).send('서버 에러');
+    } finally {
+        // 데이터베이스 연결을 종료
+        if (connection) {
+            await connection.end();
+        }
+    }
+});
+module.exports = { CloseTotalPrice, CloseTotalCashPrice, CloseTotalCardPrice };
