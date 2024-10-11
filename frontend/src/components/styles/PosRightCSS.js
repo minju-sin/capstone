@@ -1,18 +1,26 @@
-/* 포스기 오른쪽 디자인 */
-
 import styled from "styled-components";
 
 export const StyledRightHalf = styled.div`
-    width: 50%; /* 나머지 공간인 오른쪽 반절의 너비를 50%로 설정. */
+    width: 50%; /* 기본적으로 오른쪽 반절의 너비를 50%로 설정. */
     height: 820px;
     padding: 20px;
     background-color: #ccc;
     box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        width: 100%; /* 화면 너비가 768px 이하일 경우 전체 너비로 설정 */
+        height: auto; /* 높이를 자동으로 설정하여 유동적으로 변하도록 함 */
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+        width: 100%; /* 화면 너비가 768px 이하일 경우 전체 너비로 설정 */
+        height: auto; /* 높이를 자동으로 설정하여 유동적으로 변하도록 함 */
+    }
 `;
 
 export const StyledButtonContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between; /* 버튼 간격 조정 */
 `;
 
 export const StyledRightButton = styled.button`
@@ -29,6 +37,17 @@ export const StyledRightButton = styled.button`
 
     &:hover {
         background-color: #bbb; /* 호버 시 색상 변경 */
+    }
+
+    @media (max-width: 768px) {
+        width: calc(45% - 10px); /* 화면 너비가 768px 이하일 경우 버튼 너비 조정 */
+    }
+
+    @media (max-width: 480px) {
+        width: 100%; /* 화면 너비가 480px 이하일 경우 버튼을 전체 너비로 설정 */
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+        font-size: 10px;
     }
 `;
 
@@ -51,5 +70,19 @@ export const StyledButtonMerged = styled.button`
     
     &:hover {
         background-color: #bbb; /* 호버 시 색상 변경 */
+    }
+
+    @media (max-width: 768px) {
+        width: calc(45% - 10px); /* 화면 너비가 768px 이하일 경우 버튼 너비 조정 */
+        font-size: 10px;
+    }
+
+    @media (max-width: 480px) {
+        width: 100%; /* 화면 너비가 480px 이하일 경우 버튼을 전체 너비로 설정 */
+        font-size: 10px;
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+        width: 100%; /* 크기 조정 */
+        font-size: 10px;
     }
 `;
