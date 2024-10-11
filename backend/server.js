@@ -10,7 +10,7 @@ dbConnect();
 app.use(express.json());
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'http://192.168.35.48:3000'],
     credentials: true,
 }));
 
@@ -27,6 +27,6 @@ app.use("/order", require("./routes/orderRoute"));
 app.use("/close", require("./routes/closeRoute"));
   
 
-app.listen(8080, () => {		// 8080번 포트로 서버 실행
+app.listen(8080, '0.0.0.0',() => {		// 8080번 포트로 서버 실행
     console.log("서버 실행")
 });
