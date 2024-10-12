@@ -23,13 +23,30 @@ function ClosePage() {
       fetchInventory();
   }, []);
 
+  // 유통기한 계산 함수
+  const calculateDaysLeft = (dateAdded) => {
+    const productionDate = new Date(dateAdded);
+    const expirationDate = new Date(productionDate);
+    expirationDate.setMonth(productionDate.getMonth() + 1); // 1개월 유통기한
+    const today = new Date();
+    const timeDiff = expirationDate - today;
+    const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    return daysLeft >= 0 ? daysLeft : 0;
+};
+
+// 각 아이템에 유통기한 정보 추가
+const updatedInventoryItems = inventoryItems.map(item => ({
+    ...item,
+    daysLeft: calculateDaysLeft(item.dateAdded)
+}));
+
     return (
       <StyledBody>
         <StyledHeader class="header">
           <StyledH1>마감영수증</StyledH1>
         </StyledHeader>
 
-        <Close inventoryItems={inventoryItems} />
+        <Close inventoryItems={updatedInventoryItems} />
 
         
       </StyledBody>

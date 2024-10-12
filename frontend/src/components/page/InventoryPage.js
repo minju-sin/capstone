@@ -7,7 +7,7 @@ import InvenRight from "../ui/InvenRight";
 import axios from "axios";
 
 function InventoryPage() {
-    // 재고 추가 변수 
+    // 재고 추가 변수
     const [inventoryItems, setInventoryItems] = useState([]);
 
     // 초기 재고 데이터를 불러오는 함수
@@ -24,7 +24,7 @@ function InventoryPage() {
         fetchInventory();
     }, []);
 
-    // 재고 추가하는 함수 
+    // 재고 추가하는 함수
     const addItemToInventory = (item, quantity) => {
         setInventoryItems(prevItems => [
             ...prevItems,
@@ -32,11 +32,28 @@ function InventoryPage() {
         ]);
     };
 
+    // 유통기한 계산 함수
+    const calculateDaysLeft = (dateAdded) => {
+        const productionDate = new Date(dateAdded);
+        const expirationDate = new Date(productionDate);
+        expirationDate.setMonth(productionDate.getMonth() + 1); // 1개월 유통기한
+        const today = new Date();
+        const timeDiff = expirationDate - today;
+        const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+        return daysLeft >= 0 ? daysLeft : 0;
+    };
+
+    // 각 아이템에 유통기한 정보 추가
+    const updatedInventoryItems = inventoryItems.map(item => ({
+        ...item,
+        daysLeft: calculateDaysLeft(item.dateAdded)
+    }));
+
     return (
         <StyledBody>
-            <Header/>
+            <Header />
             <StyledContainer className="container">
-                <InvenLeft inventoryItems={inventoryItems} />
+                <InvenLeft inventoryItems={updatedInventoryItems} />
                 <InvenRight addItemToInventory={addItemToInventory} />
             </StyledContainer>
         </StyledBody>

@@ -135,7 +135,7 @@ function Close({ inventoryItems }) {
                 <tbody>
                     {inventoryItems.map(item => (
                     <ReceiptRow key={item.idinventory}>
-                        <ReceiptCell>{item.idinventory}</ReceiptCell>
+                        <ReceiptCell>{item.idinventory}({item.daysLeft}일)</ReceiptCell>
                         <ReceiptCell></ReceiptCell>
                         <ReceiptCell>{item.quantity}개</ReceiptCell>
                     </ReceiptRow>
