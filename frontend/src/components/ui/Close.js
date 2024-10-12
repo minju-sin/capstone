@@ -25,7 +25,7 @@ function Close({ inventoryItems }) {
     useEffect(() => {
         const fetchTotalSales = async () => {
           try {
-            const response = await fetch('/close/totalPrice'); 
+            const response = await fetch('http://192.168.35.48:8080/close/totalPrice'); 
             const data = await response.json();
             setTotalSales(data.totalPrice);
           } catch (error) {
@@ -37,23 +37,9 @@ function Close({ inventoryItems }) {
 
     // 현금 매출액 API 
     useEffect(() => {
-        const fetchTotalCardSales = async () => {
-          try {
-            const response = await fetch('/close/totalCashPrice'); 
-            const data = await response.json();
-            setTotalCardSales(data.totalPrice);
-          } catch (error) {
-            console.error('총 매출액을 불러오는 중 오류 발생:', error);
-          }
-        };
-        fetchTotalCardSales();
-    }, []);
-
-    // 신용카드 매출액 API 
-    useEffect(() => {
         const fetchTotalCashSales = async () => {
           try {
-            const response = await fetch('/close/totalCardPrice'); 
+            const response = await fetch('http://192.168.35.48:8080/close/totalCashPrice'); 
             const data = await response.json();
             setTotalCashSales(data.totalPrice);
           } catch (error) {
@@ -61,6 +47,20 @@ function Close({ inventoryItems }) {
           }
         };
         fetchTotalCashSales();
+    }, []);
+
+    // 신용카드 매출액 API 
+    useEffect(() => {
+        const fetchTotalCardSales = async () => {
+          try {
+            const response = await fetch('http://192.168.35.48:8080/close/totalCardPrice'); 
+            const data = await response.json();
+            setTotalCardSales(data.totalPrice);
+          } catch (error) {
+            console.error('총 매출액을 불러오는 중 오류 발생:', error);
+          }
+        };
+        fetchTotalCardSales();
     }, []);
 
     // 인쇄 함수
