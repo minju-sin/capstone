@@ -13,8 +13,11 @@ const InvenSave = asyncHandler(async (req, res) => {
         // 요청에서 재고 항목의 이름과 수량 추출
         const { idinventory, quantity } = req.body;
 
+        // 현재 날짜 생성
+        const dateAdded = new Date();
+
         // 데이터베이스에 새로운 재고를 추가하는 SQL 쿼리 실행
-        await connection.query('INSERT INTO inventory (idinventory, quantity) VALUES (?, ?)', [idinventory, quantity]);
+        await connection.query('INSERT INTO inventory (idinventory, quantity, dateAdded) VALUES (?, ?, ?)', [idinventory, quantity, dateAdded]);
         
         // 성공적인 응답
         res.status(201).send('재고 추가 완료');
@@ -40,7 +43,7 @@ const InvenShow = asyncHandler(async (req, res) => {
         // 데이터베이스에 연결
         connection = await dbConnect();
         
-        const [results] = await connection.query('SELECT idinventory, quantity FROM inventory');
+        const [results] = await connection.query('SELECT idinventory, quantity, dateAdded FROM inventory');
         
         // 쿼리 결과를 JSON 형식으로 응답
         res.json(results);
