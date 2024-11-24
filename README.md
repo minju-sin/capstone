@@ -36,9 +36,10 @@ Pos 데이터(상점)을 통한 실시간 재고관리 시스템을 개발하였
 -  기획 및 개발 프로젝트 총괄
 -  공동 환경 셋팅 및 연동 작업 
 - 데이터베이스 설계 및 연동
-![ERD](https://github.com/user-attachments/assets/bd4fbaae-b2d8-499c-bc63-60069418dd08)
 - html+css+js 기반 코드를 React로 전환 및 코드 간결화
 - node.js를 이용한 Restful API 설계 및 구현
+![ERD](https://github.com/user-attachments/assets/bd4fbaae-b2d8-499c-bc63-60069418dd08)
+
 
 ## 재고관리, 마감영수증, 영수증 조회 
 ![재고관리 디자인](https://github.com/user-attachments/assets/e8b04699-3370-42ec-a4d5-c2d74aa4f243)
