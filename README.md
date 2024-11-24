@@ -17,10 +17,6 @@ React, node.js, MySQL을 활용하여 대부분의 가게에서 수동으로 재
 - React
 - node.js
 
-## Figma 디자인 링크
-
-[Figma 디자인 보기](https://www.figma.com/file/E87N7RqWo0gkigN67M8QH5/%EB%B0%B0%EB%8B%AC%EC%9D%98-%EB%AF%BC%EC%A1%B0-%EC%B5%9C%EC%A2%85%EB%B3%B8?type=design&node-id=0-1&mode=design)
-
 ## 소개 
 프랜차이즈 및 소매업체를 대상으로 모든 상품들의 입출고, 재고 상태를 실시간으로 파악할 수 있는 
 Pos 데이터(상점)을 통한 실시간 재고관리 시스템을 개발하였습니다. 
